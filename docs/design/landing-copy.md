@@ -143,7 +143,7 @@ Support · support@goodrep.fitness; © 2026 Mukhammadjon Ibragimov.
 | `<title>` | Goodrep: Workout Tracker · Beat last time |
 | meta description | A strength-training log for iPhone. Last session's weight and reps are filled in, so most sets take one tap. No account, no ads, no tracking, and your data stays in your own iCloud. |
 | og:title | Goodrep: beat last time |
-| og:description | Last session's numbers, filled in and waiting. A strength-training log for iPhone with no account, no ads and no subscription. |
+| og:description | Last session's numbers, filled in and waiting. A strength-training log for iPhone with no account, no ads and no tracking. |
 
 ## Critic rounds
 
@@ -185,3 +185,17 @@ On the alternates: keep "Beat last time." A ("Last time, filled in.") would repe
 the verb. B ("Your log. Nobody else's.") is the strongest sentence in the deck and the one no competitor could run,
 but it is a trust claim, not a reason to open the app mid-set; if the scoreboard H2 ever feels soft, B is its
 replacement.
+
+### Round 3 (final): 9 / 10
+
+All four round-2 items confirmed fixed; nothing else broke, every line still traces to metadata.md or SPEC §4. One
+leftover, accepted: on a 402 px phone the hero subhead runs five lines and ends "No account, no ads, / no tracking."
+(the bold "Most sets take one tap." is kept whole on purpose).
+
+Final notes for the owner, as decisions rather than rewrites:
+1. Use one triple everywhere. Done here: the og:description now says "no account, no ads and no tracking", like the
+   hero and the store's first paragraph.
+2. "Your log. Nobody else's." (alternate B) is the one line no competitor can run. Kept out of the hero on purpose;
+   candidate for the scoreboard H2 or an OG title aimed at privacy-minded readers.
+3. When the App Store link goes live, check on short phones that the live button does not push the screens too far
+   down; if anything gets shorter, make it the timer demo, not the scoreboard.
