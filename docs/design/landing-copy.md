@@ -52,7 +52,7 @@ Source keys: **M-desc** = metadata.md, "Description, without Pro"; **M-pro** = "
 | Board, caption (chartreuse) | IN THE FIELDS BEFORE YOUR FIRST REP | M-desc "Weight and reps are filled in from last time"; E4.2 |
 | Eyebrow | A STRENGTH-TRAINING LOG FOR IPHONE | SPEC §1.1 "A personal strength-training log for iPhone" |
 | **H1** | **BEAT / LAST TIME.** | M-desc "so you always know what to beat"; E4.2, E4.5 |
-| **Subhead** | Open an exercise in your workout and last session's weight and reps are already there, with your earlier sets underneath. **Most sets take one tap.** No account, no ads, no tracking. | M-desc "Weight and reps are filled in from last time, so most sets take one tap"; "Your earlier sessions sit right under the entry fields"; M-desc first paragraph "No account, no ads, no tracking"; E4.2 (pre-fill is per workout item) |
+| **Subhead** (the bold phrase never wraps) | Open an exercise in your workout and last session's weight and reps are already there, your earlier sets underneath. **Most sets take one tap.** No account, no ads, no tracking. | M-desc "Weight and reps are filled in from last time, so most sets take one tap"; "Your earlier sessions sit right under the entry fields"; M-desc first paragraph "No account, no ads, no tracking"; E4.2 (pre-fill is per workout item) |
 | CTA (launch state) | COMING TO THE APP STORE (ghost button to `#appstore`) | brief |
 | Header nav | THE LOG · SCOREBOARD · PRO · APP STORE: SOON | |
 
@@ -89,9 +89,9 @@ filled-in 80 kg and 8 reps and the sets listed under them).
 | Row | ACCOUNTS TO MAKE: 0. *Open the app and lift.* | M-desc "No sign-up"; §1.1 "no accounts"; E1.1 (onboarding can be skipped) |
 | Row | ADS: 0. *Not on any screen.* | M-desc "no ads"; §1.1 |
 | Row | TRACKERS AND ANALYTICS: 0. *We never see your workouts or health data.* | M-desc PRIVATE BY DESIGN, verbatim sentence |
-| Row | SUBSCRIPTIONS: 0. *Nothing renews, so there is nothing to cancel.* | E11 "no subscription"; §1.2 |
+| Row | SUBSCRIPTIONS: 0. *Nothing renews. Pro is one purchase.* | E11 "no subscription"; §1.2 |
 | Row | OUR SERVERS: 0. *Your log lives on your iPhone and your iCloud.* | M-priv "there is no server of ours"; M-desc "on your iPhone and in your own iCloud" |
-| Footnote 1 | **Only your Apple Account can read it.** Workouts, sets and measurements sync through your private iCloud database. Apple Health is optional. | M-desc SYNCS WITH ICLOUD; WORKS WITH APPLE HEALTH; E9.1, E8 |
+| Footnote 1 | **Your log, your iCloud.** Workouts, sets and measurements sync through your private iCloud database, which only your Apple Account can read. Apple Health is optional, and everything works without it. | M-desc SYNCS WITH ICLOUD; WORKS WITH APPLE HEALTH; E9.1, E8 |
 | Footnote 2 | **Take it with you.** Export every set you have logged as a CSV file for your spreadsheet, and import it again on any device. | M-desc SYNCS WITH ICLOUD bullet 2; E6.5 |
 
 ## 4. Pro (`#pro`)
@@ -103,7 +103,7 @@ filled-in 80 kg and 8 reps and the sets listed under them).
 | Line 1 | **EXERCISE CHARTS.** Weight, reps, estimated 1RM and volume, over any range from one month to all time. | Owner (1M to All); E6.3, E11.2 |
 | Line 2 | **BODY CHARTS.** Body weight, body fat and tape measurements, charted over time. | Owner; E7.2, E11.2 |
 | Line 3 | **APP ICONS.** Alternate icons for your Home Screen. | Owner; E11.2 |
-| One-time line | **One purchase.** Pro is on all your iPhones, and on your family's through Family Sharing. | Owner; M-pro "on all your iPhones and with your family through Family Sharing"; E11 |
+| One-time line | **One purchase, no subscription.** Pro is on all your iPhones, and on your family's iPhones through Family Sharing. | Owner; M-pro "on all your iPhones and with your family through Family Sharing"; E11 |
 | Free line | Everything else stays free: unlimited logging and workouts, timers, the history calendar, the summary and its share image, CSV export and import, iCloud sync and Apple Health. | Owner's free list; E11.2 "Everything else in E1–E10 is free and unlimited" |
 
 ## 5. Rest timer demo (`#rest`)
@@ -167,3 +167,21 @@ Hero passes the 3-second test, nothing overclaims, the hard rules hold. Ranked p
 6. **Precision.** Pre-fill is per workout item (E4.2) → "Open an exercise in your workout". "From the last month back
    to your first session" read as a calendar month → "over any range from one month to all time".
 7. **Polish.** "Servers of ours" → "Our servers". Timer fact "Voice, optional" lost its leader on the phone → "Voice".
+
+### Round 2: 8.5 / 10
+
+All seven round-1 items confirmed fixed; the order now reads open → session → between sets → trust → price → launch.
+Ranked remainder and what changed:
+
+1. **Pro had lost "no subscription"** (a side effect of the round-1 trim). → "One purchase, no subscription. Pro is on
+   all your iPhones, and on your family's iPhones through Family Sharing."
+2. **Footnote 1 opened with an "it" before its noun**, and "Apple Health is optional" dangled. → "Your log, your
+   iCloud." lead-in; Health gets the store's reason, "and everything works without it".
+3. **The hero's bold "Most sets take one tap." split across two phone lines.** → It no longer wraps.
+4. **The Subscriptions row sat above the section that names the only purchase.** → "Nothing renews. Pro is one
+   purchase."
+
+On the alternates: keep "Beat last time." A ("Last time, filled in.") would repeat the board caption above it and lose
+the verb. B ("Your log. Nobody else's.") is the strongest sentence in the deck and the one no competitor could run,
+but it is a trust claim, not a reason to open the app mid-set; if the scoreboard H2 ever feels soft, B is its
+replacement.
