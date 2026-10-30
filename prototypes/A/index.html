@@ -88,9 +88,9 @@ h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch:
 .final { min-height: auto; padding-top: 120px; }
 .final-grid { display: grid; gap: clamp(32px, 6vw, 96px); align-items: start; }
 @media (min-width: 900px) { .final-grid { grid-template-columns: minmax(280px, 380px) 1fr; } }
-.phone { position: relative; width: min(78vw, 380px); margin: 0 auto; aspect-ratio: 1320 / 2868;
+.phone { position: relative; width: min(78vw, 380px); margin: 0 auto; aspect-ratio: 1000 / 2097.5;
   border-radius: 15% / 7%; background: #1b1b1b; box-shadow: inset 0 0 0 2px #3a3a3a, 0 0 0 1px #000; }
-.phone img { position: absolute; top: 1.47%; left: 3.2%; width: 93.6%; height: 97.06%; border-radius: 12.5% / 5.8%; }
+.phone img { position: absolute; top: 1.526%; left: 3.2%; width: 93.6%; height: 96.95%; border-radius: 12.5% / 5.8%; }
 .phone::after { content: ""; position: absolute; top: 4.6%; left: 50%; width: 27%; height: 2.9%; transform: translateX(-50%);
   background: #000; border-radius: 99px; }
 .spec { margin: 0; padding: 0; list-style: none; font: 500 clamp(13px, 1.2vw, 15px)/1.4 var(--mono); text-transform: uppercase;
@@ -112,7 +112,7 @@ h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch:
 /* Footer: the name at full width, then the legal links */
 footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
 .wordmark { display: block; margin: 0 0 28px; font: 900 16vw/.8 var(--display); font-stretch: 125%; letter-spacing: -.02em;
-  color: var(--surface2); white-space: nowrap; user-select: none; }
+  color: #6B6B66; white-space: nowrap; user-select: none; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--text2); }
 .foot nav ul { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
 .foot a { color: var(--text); text-underline-offset: 4px; }

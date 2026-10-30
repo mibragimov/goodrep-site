@@ -115,9 +115,9 @@ section { scroll-margin-top: 16px; }
 .round .num { width: 64px; }
 .round h3 { margin: 0; font: 900 clamp(22px, 2vw, 28px)/1 var(--display); font-stretch: 125%; text-transform: uppercase; }
 .round p { margin: 0; color: var(--text2); }
-.phone { position: relative; margin-top: auto; aspect-ratio: 1320 / 2868; border-radius: 15% / 7%; background: #1b1b1b;
+.phone { position: relative; margin-top: auto; aspect-ratio: 1000 / 2097.5; border-radius: 15% / 7%; background: #1b1b1b;
   box-shadow: inset 0 0 0 2px #3a3a3a; }
-.phone img { position: absolute; top: 1.47%; left: 3.2%; width: 93.6%; height: 97.06%; border-radius: 12.5% / 5.8%; }
+.phone img { position: absolute; top: 1.526%; left: 3.2%; width: 93.6%; height: 96.95%; border-radius: 12.5% / 5.8%; }
 .phone::after { content: ""; position: absolute; top: 4.6%; left: 50%; width: 27%; height: 2.9%; transform: translateX(-50%);
   background: #000; border-radius: 99px; }
 
@@ -209,9 +209,9 @@ footer p { margin: 6px 0 0; }
           <div class="units mono" aria-hidden="true"><span>Min</span><span>Sec</span></div>
         </div>
         <div class="controls">
-          <button type="button" id="minus" aria-label="Fifteen seconds less">−15</button>
+          <button type="button" id="minus">−15<span class="sr"> seconds</span></button>
           <button type="button" class="go" id="start">Start</button>
-          <button type="button" id="plus" aria-label="Fifteen seconds more">+15</button>
+          <button type="button" id="plus">+15<span class="sr"> seconds</span></button>
         </div>
         <p class="sr" aria-live="polite" id="announce">Break timer set to 1 minute 30 seconds.</p>
       </div>
