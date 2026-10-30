@@ -74,6 +74,7 @@ header nav .cta-link { color: var(--volt); }
 .readout .u { color: var(--text2); font-weight: 700; font-size: clamp(13px, 1.6vw, 22px); padding-bottom: .2em; }
 .readout .x { align-self: center; color: var(--volt); font: 900 clamp(26px, 4vw, 60px)/1 var(--display); }
 .eyebrow { margin: clamp(24px, 4vw, 48px) 0 0; color: var(--text2); }
+.readout .caption { margin: 14px 0 0; color: var(--volt); font-weight: 700; }
 .cue { margin: 14px 0; color: var(--text2); min-height: 2.6em; display: flex; align-items: center; }
 .seg [data-s="h"]:not(.on) { display: none; }
 .seg [data-s="h"].on ~ [data-s="g"] { display: none; }
@@ -210,17 +211,18 @@ footer p { margin: 6px 0 0; }
 <main id="main">
   <section class="wrap hero" aria-labelledby="h1">
     <div class="housing readout boot">
-      <span class="tag l mono">Flat bench press · last time</span><span class="tag r mono">Filled in</span>
+      <span class="tag l mono">Flat bench press</span><span class="tag r mono">Last time</span>
       <p class="row" role="img" aria-label="Last time: 80 kilograms for 8 reps">
         <!--seg:kg--><svg class="seg" viewBox="-6 -6 274 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--><span class="u mono" aria-hidden="true">kg</span>
         <span class="x" aria-hidden="true">×</span>
         <!--seg:reps--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg--><span class="u mono" aria-hidden="true">reps</span>
       </p>
+      <p class="caption mono">In the fields before your first rep</p>
     </div>
     <p class="eyebrow mono">A strength-training log for iPhone</p>
     <h1 class="display" id="h1">Beat<br> <span class="hl">last time.</span></h1>
     <div class="hero-row">
-      <p class="lead">Open an exercise and last session's weight and reps are already in the fields, with your earlier sets listed under them. <strong>Most sets take one tap.</strong> No account, no ads, no subscription.</p>
+      <p class="lead">Open an exercise in your workout and last session's weight and reps are already there, with your earlier sets underneath. <strong>Most sets take one tap.</strong> No account, no ads, no tracking.</p>
       <div class="btns">
         <!-- TODO: when the app is live, point this at the App Store URL -->
         <a class="btn ghost" href="#appstore">Coming to the App Store</a>
@@ -230,12 +232,12 @@ footer p { margin: 6px 0 0; }
 
   <section class="rounds" id="rounds" aria-labelledby="r-h">
     <div class="wrap">
-      <div class="head"><span class="mono">One session, four screens</span><h2 class="display" id="r-h">Every set, <span class="hl">logged honestly.</span></h2></div>
+      <div class="head"><span class="mono">One session in Goodrep</span><h2 class="display" id="r-h">Start <span class="hl">to finish.</span></h2></div>
       <ol class="rail" aria-label="Four screens from a session in Goodrep">
         <li><article class="round">
           <div class="num"><!--seg:n1--><svg class="seg" viewBox="-6 -6 274 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></div>
           <h3>One tap a set</h3>
-          <p>Yesterday's 80 × 8 is already in the fields. Went heavier? Change the number, then tap Add set.</p>
+          <p>Match it or beat it. Change a number if you went heavier, then tap Add set.</p>
           <div class="phone"><img src="../../assets/screens/03-session-600.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Goodrep's logging screen for flat bench press: 80 kilograms and 8 reps already filled in, an Add set button, and the sets from yesterday and October 25 listed underneath."></div>
         </article></li>
         <li><article class="round">
@@ -260,41 +262,6 @@ footer p { margin: 6px 0 0; }
     </div>
   </section>
 
-  <section class="score" id="score" aria-labelledby="s-h">
-    <div class="wrap">
-      <div class="head"><span class="mono">Scoreboard</span><h2 class="display" id="s-h">Left out <span class="hl">on purpose.</span></h2></div>
-      <div class="housing board">
-        <span class="tag l mono">Left out</span><span class="tag r mono">Count</span>
-        <ul>
-          <li><span class="k">Accounts to make<small>Open the app and lift.</small></span><span class="v"><!--seg:zero1--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
-          <li><span class="k">Ads<small>Not on any screen.</small></span><span class="v"><!--seg:zero2--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
-          <li><span class="k">Trackers and analytics<small>We never see your workouts or health data.</small></span><span class="v"><!--seg:zero3--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
-          <li><span class="k">Subscriptions<small>Nothing renews, so there is nothing to cancel.</small></span><span class="v"><!--seg:zero4--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
-          <li><span class="k">Servers of ours<small>Your log lives on your iPhone and in your own iCloud.</small></span><span class="v"><!--seg:zero5--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
-        </ul>
-      </div>
-      <div class="after">
-        <p><strong>Your data stays yours.</strong> Workouts, sets and measurements sync through your private iCloud database, which only your Apple Account can read. Apple Health is optional.</p>
-        <p><strong>Take it with you.</strong> Export every set you have logged as a CSV file for your spreadsheet, and import it again on any device.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="pro" id="pro" aria-labelledby="p-h">
-    <div class="wrap split">
-      <div class="head"><span class="mono">Goodrep Pro</span><h2 class="display" id="p-h">Pay once. <span class="hl">Keep it.</span></h2></div>
-      <div>
-        <ul class="unlocks">
-          <li><span class="mono">Exercise charts</span>Weight, reps, estimated 1RM and volume, from the last month back to your first session.</li>
-          <li><span class="mono">Body charts</span>Body weight, body fat and tape measurements, charted over time.</li>
-          <li><span class="mono">App icons</span>Alternate icons for your Home Screen.</li>
-        </ul>
-        <p class="once"><strong>One purchase, no subscription.</strong> Pro stays yours on all your iPhones and reaches your family through Family Sharing.</p>
-        <p class="free">Everything else stays free: unlimited logging and workouts, timers, the history calendar, the summary and its share image, CSV export and import, iCloud sync and Apple Health.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="timer" id="rest" aria-labelledby="t-h">
     <div class="wrap timer-grid">
       <div>
@@ -303,7 +270,7 @@ footer p { margin: 6px 0 0; }
         <ul class="facts mono">
           <li><span>Per exercise</span><i></i><span>Its own rest time</span></li>
           <li><span>Full screen</span><i></i><span>−15 s · +15 s</span></li>
-          <li><span>Voice, optional</span><i></i><span>"Break over. Next: …"</span></li>
+          <li><span>Voice</span><i></i><span>"Break over. Next: …"</span></li>
         </ul>
       </div>
       <div>
@@ -321,10 +288,45 @@ footer p { margin: 6px 0 0; }
     </div>
   </section>
 
+  <section class="score" id="score" aria-labelledby="s-h">
+    <div class="wrap">
+      <div class="head"><span class="mono">Scoreboard</span><h2 class="display" id="s-h">Left out <span class="hl">on purpose.</span></h2></div>
+      <div class="housing board">
+        <span class="tag l mono">Left out</span><span class="tag r mono">Count</span>
+        <ul>
+          <li><span class="k">Accounts to make<small>Open the app and lift.</small></span><span class="v"><!--seg:zero1--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
+          <li><span class="k">Ads<small>Not on any screen.</small></span><span class="v"><!--seg:zero2--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
+          <li><span class="k">Trackers and analytics<small>We never see your workouts or health data.</small></span><span class="v"><!--seg:zero3--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
+          <li><span class="k">Subscriptions<small>Nothing renews, so there is nothing to cancel.</small></span><span class="v"><!--seg:zero4--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
+          <li><span class="k">Our servers<small>Your log lives on your iPhone and your iCloud.</small></span><span class="v"><!--seg:zero5--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></span></li>
+        </ul>
+      </div>
+      <div class="after">
+        <p><strong>Only your Apple Account can read it.</strong> Workouts, sets and measurements sync through your private iCloud database. Apple Health is optional.</p>
+        <p><strong>Take it with you.</strong> Export every set you have logged as a CSV file for your spreadsheet, and import it again on any device.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pro" id="pro" aria-labelledby="p-h">
+    <div class="wrap split">
+      <div class="head"><span class="mono">Goodrep Pro</span><h2 class="display" id="p-h">Pay once. <span class="hl">Keep it.</span></h2></div>
+      <div>
+        <ul class="unlocks">
+          <li><span class="mono">Exercise charts</span>Weight, reps, estimated 1RM and volume, over any range from one month to all time.</li>
+          <li><span class="mono">Body charts</span>Body weight, body fat and tape measurements, charted over time.</li>
+          <li><span class="mono">App icons</span>Alternate icons for your Home Screen.</li>
+        </ul>
+        <p class="once"><strong>One purchase.</strong> Pro is on all your iPhones, and on your family's through Family Sharing.</p>
+        <p class="free">Everything else stays free: unlimited logging and workouts, timers, the history calendar, the summary and its share image, CSV export and import, iCloud sync and Apple Health.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="store" id="appstore" aria-labelledby="a-h">
     <div class="wrap">
       <span class="mono" style="color:var(--text2)">Launch</span>
-      <h2 class="display" id="a-h">Coming to <span class="hl">the App Store.</span></h2>
+      <h2 class="display" id="a-h">Coming to<br> <span class="hl">the App Store.</span></h2>
       <div class="btns">
         <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
         <p class="btn ghost">Free on iPhone · not out yet</p>
@@ -337,7 +339,7 @@ footer p { margin: 6px 0 0; }
 <footer>
   <div class="wrap">
     <!--seg:foot--><svg class="seg" viewBox="-6 -6 894 192" role="img" aria-label="GOODREP"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(286.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(410.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(534.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(658.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(782.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg-->
-    <p class="tagline">Goodrep: Workout Tracker. Every set, logged honestly.</p>
+    <p class="tagline">Goodrep: Workout Tracker.<br> Every set, logged honestly.</p>
     <div class="row mono">
       <nav aria-label="Legal and support"><ul>
         <li><a href="/privacy">Privacy policy</a></li>
