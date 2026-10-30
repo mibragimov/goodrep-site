@@ -41,22 +41,26 @@ GLYPHS = {
 def pts(p):
     return " ".join(f"{x:.1f},{y:.1f}" for x, y in p)
 
-def cell(ch, ox, live):
+def cell(ch, ox, live, dots=False):
     lit = set(GLYPHS[ch])
-    # Live cells carry every segment so a script can light any glyph; a static G swaps g for the half bar.
-    names = "abcdefgh" if live else ("abcdefh" if "h" in lit else "abcdefg")
+    # Live cells carry every segment so a script can light any glyph; h (the half bar) comes before g so CSS can hide
+    # whichever of the two is not in use. A static G swaps g for the half bar.
+    names = "abcdefhg" if live else ("abcdefh" if "h" in lit else "abcdefg")
     out = [f'<g transform="translate({ox + SLANT:.1f} 0) skewX(-{SKEW})"' + (f' data-cell' if live else "") + ">"]
     for n in names:
         cls = "on" if n in lit else ""
         data = f' data-s="{n}"' if live else ""
         out.append(f'<polygon points="{pts(SEGS[n])}"{data}' + (f' class="{cls}"' if cls else "") + "/>")
+    if dots:  # colon dots in the middle of this cell, off until a script shows a time
+        for cy in (H * 0.32, H * 0.68):
+            out.append(f'<rect class="colon" x="{W / 2 - 10:.1f}" y="{cy - 10:.1f}" width="20" height="20"/>')
     out.append("</g>")
     return "".join(out)
 
-def display(text, label, live=False, colon_after=None):
+def display(text, label, live=False, colon_after=None, dots_cell=None):
     parts, x = [], 0.0
     for i, ch in enumerate(text):
-        parts.append(cell(ch, x, live))
+        parts.append(cell(ch, x, live, dots=(i == dots_cell)))
         x += W + SPACE
         if colon_after is not None and i == colon_after:
             cx = x + SLANT / 2 - 4
@@ -72,8 +76,7 @@ def display(text, label, live=False, colon_after=None):
     return f'<svg class="seg" viewBox="-6 -6 {width + 12:.0f} {H + 12}" {role}>' + "".join(parts) + "</svg>"
 
 DISPLAYS = {
-    "hero": display("GOOdrEP", "GOODREP"),
-    "timer": display("0130", "", live=True, colon_after=1),
+    "hero": display("GOOdrEP", "GOODREP", live=True, dots_cell=3),
     "n1": display("01", ""), "n2": display("02", ""), "n3": display("03", ""), "n4": display("04", ""),
     "zero1": display("0", ""), "zero2": display("0", ""), "zero3": display("0", ""), "zero4": display("0", ""),
     "one": display("1", ""), "four": display("400", ""),

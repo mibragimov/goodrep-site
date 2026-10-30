@@ -52,7 +52,7 @@ img { display: block; max-width: 100%; }
 .housing { position: relative; background: var(--surface); border: 1px solid #2c2c2c; border-radius: clamp(10px, 1.6vw, 22px);
   padding: clamp(28px, 4vw, 56px) clamp(16px, 3vw, 48px) clamp(16px, 2.4vw, 32px);
   box-shadow: inset 0 0 0 clamp(4px, .6vw, 8px) #101010; }
-.housing .tag { position: absolute; top: clamp(8px, 1.1vw, 16px); color: var(--text3); font-size: 11px; }
+.housing .tag { position: absolute; top: clamp(8px, 1.1vw, 16px); color: var(--text3); font-size: 12px; }
 .housing .tag.l { left: clamp(16px, 3vw, 48px); } .housing .tag.r { right: clamp(16px, 3vw, 48px); }
 
 header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--pad); }
@@ -66,7 +66,14 @@ header nav .cta-link { color: var(--volt); }
 
 /* Hero */
 .hero { padding-top: clamp(8px, 2vw, 24px); padding-bottom: clamp(56px, 9vw, 120px); }
-.hero h1 { font-size: clamp(44px, 10.5vw, 150px); margin-top: clamp(28px, 5vw, 64px); }
+.hero h1 { font-size: clamp(44px, min(9vw, 15vh), 124px); margin-top: clamp(24px, 4vw, 48px); }
+@media (min-width: 900px) { .hero .housing { max-width: 1040px; } }
+.clockbar { display: grid; gap: 12px 32px; align-items: center; margin-top: 14px; max-width: 1040px; }
+@media (min-width: 760px) { .clockbar { grid-template-columns: 1fr minmax(320px, 420px); } }
+.cue { margin: 0; color: var(--text2); min-height: 2.6em; display: flex; align-items: center; }
+.seg [data-s="h"]:not(.on) { display: none; }
+.seg [data-s="h"].on ~ [data-s="g"] { display: none; }
+.seg .colon { fill: var(--off); } .seg .colon.on { fill: var(--volt); }
 .hero-row { display: grid; gap: 24px 48px; align-items: end; margin-top: 24px; }
 @media (min-width: 900px) { .hero-row { grid-template-columns: 1.2fr 1fr; } }
 .lead { margin: 0; max-width: 34rem; color: var(--text2); font-size: clamp(17px, 1.5vw, 20px); }
@@ -88,11 +95,15 @@ section { scroll-margin-top: 16px; }
 /* The rest timer */
 .timer { padding: clamp(56px, 9vw, 120px) 0; border-top: 1px solid var(--surface2); }
 .timer-grid { display: grid; gap: 32px 64px; align-items: center; }
-@media (min-width: 900px) { .timer-grid { grid-template-columns: 1fr 1.1fr; } }
+@media (min-width: 900px) { .timer-grid { grid-template-columns: 1fr 1fr; } }
 .timer p { color: var(--text2); max-width: 32rem; font-size: clamp(17px, 1.4vw, 19px); }
 .timer p strong { color: var(--text); font-weight: 600; }
-.units { display: flex; justify-content: space-around; margin-top: 10px; color: var(--text3); font-size: 11px; }
-.controls { display: grid; grid-template-columns: 1fr 1.6fr 1fr; gap: 10px; margin-top: 18px; }
+.timer .head h2 { font-size: clamp(34px, 5vw, 72px); }
+.facts { margin: 24px 0 0; padding: 0; list-style: none; font-size: 14px; }
+.facts li { display: flex; align-items: baseline; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--surface2); }
+.facts li span:first-child { color: var(--text2); } .facts li span:last-child { color: var(--text); text-align: right; }
+.facts i { flex: 1; min-width: 16px; border-bottom: 2px dotted #4a4a46; transform: translateY(-4px); }
+.controls { display: grid; grid-template-columns: 1fr 1.6fr 1fr; gap: 10px; }
 .controls button { min-height: 56px; border: 2px solid #3a3a37; background: transparent; color: var(--text); font: 700 15px var(--mono);
   text-transform: uppercase; letter-spacing: .04em; cursor: pointer; }
 .controls button:hover { border-color: var(--volt); color: var(--volt); }
@@ -173,47 +184,48 @@ footer p { margin: 6px 0 0; }
     GOODREP
   </a>
   <nav aria-label="Sections"><ul class="mono">
-    <li><a href="#timer">Rest timer</a></li><li><a href="#rounds">Rounds</a></li><li><a href="#score">Scoreboard</a></li>
+    <li><a href="#rest">Rest timer</a></li><li><a href="#rounds">Rounds</a></li><li><a href="#score">Scoreboard</a></li>
     <li><a class="cta-link" href="#appstore">App Store: soon</a></li>
   </ul></nav>
 </header>
 
 <main id="main">
   <section class="wrap hero" aria-labelledby="h1">
-    <div class="housing boot">
-      <span class="tag l mono">Goodrep</span><span class="tag r mono">for iPhone</span>
-      <!--seg:hero--><svg class="seg" viewBox="-6 -6 894 192" role="img" aria-label="GOODREP"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(286.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(410.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(534.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(658.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(782.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg-->
+    <div class="housing boot" id="clock">
+      <span class="tag l mono">Goodrep</span><span class="tag r mono" id="clockstate">Rest timer · ready</span>
+      <!--seg:hero--><svg class="seg" viewBox="-6 -6 894 192" role="img" aria-label="GOODREP"><g transform="translate(38.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/></g><g transform="translate(162.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/></g><g transform="translate(286.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/></g><g transform="translate(410.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g" class="on"/><rect class="colon" x="40.0" y="47.6" width="20" height="20"/><rect class="colon" x="40.0" y="112.4" width="20" height="20"/></g><g transform="translate(534.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g" class="on"/></g><g transform="translate(658.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g" class="on"/></g><g transform="translate(782.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g" class="on"/></g></svg><!--/seg-->
+    </div>
+    <div class="clockbar">
+      <p class="cue mono" id="announce" aria-live="polite">This clock is Goodrep's break timer. Try it.</p>
+      <div class="controls" role="group" aria-label="Break timer">
+        <button type="button" id="minus">−15<span class="sr"> seconds</span></button>
+        <button type="button" class="go" id="start">Start rest</button>
+        <button type="button" id="plus">+15<span class="sr"> seconds</span></button>
+      </div>
     </div>
     <h1 class="display" id="h1">Lift. Log. <span class="hl">Rest. Repeat.</span></h1>
     <div class="hero-row">
       <p class="lead">Goodrep is a strength-training log for iPhone: every set, logged honestly. <strong>Log a set in a tap or two, rest on a timer that starts itself</strong> and watch your lifts climb. No account, no ads, no tracking.</p>
       <div class="btns">
         <!-- TODO: when the app is live, point this at the App Store URL -->
-        <a class="btn" href="#timer">Try the rest timer</a>
         <a class="btn ghost" href="#appstore">App Store: coming soon</a>
       </div>
     </div>
   </section>
 
-  <section class="timer" id="timer" aria-labelledby="t-h">
+  <section class="timer" id="rest" aria-labelledby="t-h">
     <div class="wrap timer-grid">
+      <div class="head"><span class="mono">Rest</span><h2 class="display" id="t-h">The break <span class="hl">starts itself.</span></h2></div>
       <div>
-        <div class="head"><span class="mono">Rest · try it</span><h2 class="display" id="t-h">The break <span class="hl">starts itself.</span></h2></div>
-        <p>Log a set and <strong>the break timer can start on its own</strong>. It counts down with a beep at the end and, if you like, a spoken "Break over" with the name of the next exercise. With Goodrep in the background, a notification tells you instead.</p>
-        <p>Every exercise keeps its own rest time, and the full-screen timer nudges it by 15 seconds either way.</p>
-      </div>
-      <div>
-        <div class="housing" id="clock">
-          <span class="tag l mono">Break</span><span class="tag r mono" id="clockstate">Ready</span>
-          <!--seg:timer--><svg class="seg" viewBox="-6 -6 562 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/></g><g transform="translate(162.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/></g><polygon class="on colon" points="262.9,48.6 280.9,48.6 277.1,66.6 259.1,66.6"/><polygon class="on colon" points="249.2,113.4 267.2,113.4 263.3,131.4 245.3,131.4"/><g transform="translate(326.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/></g><g transform="translate(450.3 0) skewX(-12)" data-cell><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" data-s="a" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" data-s="b" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" data-s="c" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" data-s="d" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" data-s="e" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" data-s="f" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" data-s="g"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" data-s="h"/></g></svg><!--/seg-->
-          <div class="units mono" aria-hidden="true"><span>Min</span><span>Sec</span></div>
-        </div>
-        <div class="controls">
-          <button type="button" id="minus">−15<span class="sr"> seconds</span></button>
-          <button type="button" class="go" id="start">Start</button>
-          <button type="button" id="plus">+15<span class="sr"> seconds</span></button>
-        </div>
-        <p class="sr" aria-live="polite" id="announce">Break timer set to 1 minute 30 seconds.</p>
+        <p>Log a set and <strong>the break timer can start on its own</strong>: the same countdown you just ran on the clock above, in the app.</p>
+        <ul class="facts mono">
+          <li><span>Auto-start</span><i></i><span>After every set</span></li>
+          <li><span>Per exercise</span><i></i><span>Its own rest time</span></li>
+          <li><span>At zero</span><i></i><span>Beep and haptic</span></li>
+          <li><span>Voice, optional</span><i></i><span>"Break over. Next: …"</span></li>
+          <li><span>In the background</span><i></i><span>Notification</span></li>
+          <li><span>Full screen</span><i></i><span>−15 s · +15 s</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -221,7 +233,7 @@ footer p { margin: 6px 0 0; }
   <section class="rounds" id="rounds" aria-labelledby="r-h">
     <div class="wrap">
       <div class="head"><span class="mono">Four rounds · a session in Goodrep</span><h2 class="display" id="r-h">Plan. Log. <span class="hl">Look back.</span></h2></div>
-      <ol class="rail" aria-label="The four parts of a session" tabindex="0">
+      <ol class="rail" aria-label="The four parts of a session">
         <li><article class="round">
           <div class="num"><!--seg:n1--><svg class="seg" viewBox="-6 -6 274 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--></div>
           <h3>Build it once</h3>
@@ -277,7 +289,7 @@ footer p { margin: 6px 0 0; }
       <h2 class="display" id="a-h">Coming to <span class="hl">the App Store.</span></h2>
       <div class="btns">
         <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
-        <p class="btn ghost" role="status">Free on iPhone · not out yet</p>
+        <p class="btn ghost">Free on iPhone · not out yet</p>
       </div>
       <p>Questions before launch? <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a></p>
     </div>
@@ -300,41 +312,49 @@ footer p { margin: 6px 0 0; }
 
 <script>
 (() => {
-  // A real break timer on the seven-segment clock: deadline-based like the app, ±15 s, 0:30 to 10:00.
+  // The hero clock is a real break timer: deadline-based like the app, ±15 s, 0:30 to 10:00.
   const MAP = { "0": "abcdef", "1": "bc", "2": "abdeg", "3": "abcdg", "4": "bcfg", "5": "acdfg", "6": "acdefg",
-    "7": "abc", "8": "abcdefg", "9": "abcdfg", "G": "acdefh", "O": "abcdef", " ": "" };
+    "7": "abc", "8": "abcdefg", "9": "abcdfg", "G": "acdefh", "O": "abcdef", "d": "bcdeg", "r": "eg", "E": "adefg",
+    "P": "abefg", " ": "" };
   const clock = document.getElementById("clock");
   const cells = [...clock.querySelectorAll("[data-cell]")];
   const colon = [...clock.querySelectorAll(".colon")];
   const state = document.getElementById("clockstate");
   const say = document.getElementById("announce");
   const startBtn = document.getElementById("start");
-  let set = 90, left = 90, deadline = 0, tick = 0;
+  const NEXT = "Standing overhead press"; // the exercise after flat bench press in the sample workout
+  let set = 90, left = 90, deadline = 0, tick = 0, reset = 0;
 
-  const draw = (text, showColon = true) => {
+  const draw = (text, showColon) => {
+    clock.classList.remove("boot");
     [...text].forEach((ch, i) => cells[i].querySelectorAll("[data-s]").forEach((s) =>
       s.classList.toggle("on", MAP[ch].includes(s.dataset.s))));
     colon.forEach((c) => c.classList.toggle("on", showColon));
   };
-  const fmt = (s) => { const m = Math.floor(s / 60), r = s % 60; return String(m).padStart(2, "0") + String(r).padStart(2, "0"); };
-  const words = (s) => { const m = Math.floor(s / 60), r = s % 60; return (m ? m + " minute" + (m > 1 ? "s" : "") : "") + (m && r ? " " : "") + (r ? r + " seconds" : ""); };
-  const show = () => draw(fmt(Math.ceil(left)));
+  const time = (sec) => { const m = Math.floor(sec / 60), r = sec % 60; return " " + String(m).padStart(2, "0") + " " + String(r).padStart(2, "0") + " "; };
+  const words = (sec) => { const m = Math.floor(sec / 60), r = sec % 60; return (m ? m + " minute" + (m > 1 ? "s" : "") : "") + (m && r ? " " : "") + (r ? r + " seconds" : ""); };
+  const show = () => draw(time(Math.ceil(left)), true);
 
-  const stop = () => { clearInterval(tick); tick = 0; startBtn.textContent = "Start"; };
+  const stop = () => { clearInterval(tick); tick = 0; startBtn.textContent = "Start rest"; };
   const finish = () => {
-    stop(); state.textContent = "Break over";
-    draw(" GO ", false); clock.classList.add("done"); say.textContent = "Break over.";
-    setTimeout(() => { clock.classList.remove("done"); left = set; show(); state.textContent = "Ready"; }, 2600);
+    stop(); state.textContent = "Rest timer · break over";
+    draw("GO     ", false); clock.classList.add("done");
+    say.textContent = "Break over. Next: " + NEXT + ".";
+    reset = setTimeout(() => { clock.classList.remove("done"); left = set; draw("GOOdrEP", false); state.textContent = "Rest timer · ready"; }, 2600);
   };
   startBtn.addEventListener("click", () => {
-    if (tick) { stop(); left = Math.max(0, (deadline - Date.now()) / 1000); state.textContent = "Paused"; return; }
-    deadline = Date.now() + left * 1000; state.textContent = "Resting"; startBtn.textContent = "Pause";
-    say.textContent = "Break started, " + words(Math.ceil(left)) + ".";
+    clearTimeout(reset); clock.classList.remove("done");
+    if (tick) { stop(); left = Math.max(0, (deadline - Date.now()) / 1000); state.textContent = "Rest timer · paused"; say.textContent = "Paused at " + words(Math.ceil(left)) + "."; return; }
+    if (left <= 0) left = set;
+    deadline = Date.now() + left * 1000; state.textContent = "Rest timer · resting"; startBtn.textContent = "Pause";
+    say.textContent = "Resting " + words(Math.ceil(left)) + ". Next: " + NEXT + ".";
+    show();
     tick = setInterval(() => { left = (deadline - Date.now()) / 1000; if (left <= 0) finish(); else show(); }, 100);
   });
   const nudge = (d) => {
+    clearTimeout(reset); clock.classList.remove("done");
     if (tick) { deadline = Math.max(Date.now(), deadline + d * 1000); left = (deadline - Date.now()) / 1000; }
-    else { set = Math.min(600, Math.max(30, set + d)); left = set; }
+    else { set = Math.min(600, Math.max(30, set + d)); left = set; state.textContent = "Rest timer · set"; }
     show(); say.textContent = "Break " + words(Math.ceil(left)) + ".";
   };
   document.getElementById("minus").addEventListener("click", () => nudge(-15));

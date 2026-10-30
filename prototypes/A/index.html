@@ -78,7 +78,7 @@ h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch:
 /* Set 4: a real crop of the app's set list */
 .crop { margin: clamp(20px, 4vh, 40px) 0 0; max-width: 32rem; }
 .crop img { display: block; width: 100%; height: auto; border: 1px solid var(--surface2); border-radius: 14px; }
-.crop figcaption { margin-top: 8px; color: var(--text3); font-size: 11px; }
+.crop figcaption { margin-top: 8px; color: var(--text3); font-size: 12px; }
 
 /* The big number in set 2 */
 .clock { font: 900 clamp(64px, 22vw, 360px)/.85 var(--display); font-stretch: 125%; letter-spacing: -.03em;
@@ -209,7 +209,7 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
         </ul>
         <div class="store">
           <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
-          <p class="badge" role="status">
+          <p class="badge">
             <svg viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
             <span><small>iPhone · free · not out yet</small>Coming to the App Store</span>
           </p>
@@ -236,6 +236,7 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
 
 <script>
 (() => {
+  document.querySelector(".set").classList.add("in"); // the first screen never blinks
   document.documentElement.classList.add("js");
   // Fit each display line to the width of its block, like a poster; capped so short words stay a sane size.
   const lines = [...document.querySelectorAll(".fit")];
@@ -266,11 +267,19 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
     }
   }, { threshold: 0.35 });
   sets.forEach((s) => io.observe(s));
-  const band = () => new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) top.classList.toggle("on-volt", e.target.classList.contains("volt"));
-  }, { rootMargin: "-26px 0px " + (28 - window.innerHeight) + "px 0px" });
-  const bandIo = band();
-  [...sets, document.querySelector("footer")].forEach((s) => bandIo.observe(s));
+  // The header's ink follows whatever sits under it: a 2-px band at its baseline, rebuilt when the viewport changes.
+  let bandIo, bandH = 0;
+  const band = () => {
+    if (bandH === window.innerHeight) return;
+    bandH = window.innerHeight;
+    if (bandIo) bandIo.disconnect();
+    bandIo = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) top.classList.toggle("on-volt", e.target.classList.contains("volt"));
+    }, { rootMargin: "-26px 0px " + (28 - bandH) + "px 0px" });
+    [...sets, document.querySelector("footer")].forEach((s) => bandIo.observe(s));
+  };
+  band();
+  window.addEventListener("resize", band);
 })();
 </script>
 </body>

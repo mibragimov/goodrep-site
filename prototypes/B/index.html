@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://goodrep.fitness/assets/brand/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%230A0A0A'/%3E%3Cg fill='%23D4FF3A'%3E%3Cpath d='M515 144h226l56 74-94 75H477l-56-74z'/%3E%3Cpath d='M410 228l56 74-31 126-94 74-56-74 31-125z'/%3E%3Cpath d='M535 437h133l56 76-94 74H498z'/%3E%3Cpath d='M337 521l56 75-31 125-94 75-56-76 31-124z'/%3E%3Cpath d='M369 730h226l56 75-94 75H331l-56-75z'/%3E%3Cpath d='M731 521l56 75-31 125-94 75-56-75 31-125z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="../../assets/screens/05-summary-600.webp" imagesrcset="../../assets/screens/05-summary-600.webp 600w, ../../assets/screens/05-summary-1000.webp 1000w" imagesizes="(min-width: 900px) 300px, 56vw">
+<link rel="preload" as="image" href="../../assets/screens/03-session-600.webp" imagesrcset="../../assets/screens/03-session-600.webp 600w, ../../assets/screens/03-session-1000.webp 1000w" imagesizes="(min-width: 900px) 300px, 56vw">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -89,7 +89,13 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
 .track li { width: 26px; height: 8px; border-radius: 8px; border: 2px solid var(--volt); }
 .track li.done { background: var(--volt); }
 .chapters { position: relative; z-index: 1; }
-.chapter { min-height: 64svh; padding: 24px 0 40px; display: flex; flex-direction: column; justify-content: flex-start; }
+.chapter { min-height: 52svh; padding: 24px 0 40px; display: flex; flex-direction: column; justify-content: center; }
+/* The chapter being shown on the phone leads; the others step back (large text only, still ≥ 3:1). */
+.js .chapter .big, .js .chapter h2 { transition: opacity .3s ease; }
+.js .chapter:not(.active) .big, .js .chapter:not(.active) h2 { opacity: .4; }
+.story-intro { padding: clamp(40px, 7vw, 96px) var(--pad) clamp(8px, 2vw, 24px); max-width: 1320px; margin: 0 auto; border-top: 1px solid var(--surface2); }
+.story-intro h2 { font-size: clamp(30px, 5vw, 64px); }
+.story-intro .mono { color: var(--text2); margin: 0 0 12px; }
 .chapter .label { margin: 0 0 14px; color: var(--text2); }
 .chapter .label b { color: var(--volt); font-weight: 700; }
 .chapter .big { margin: 0 0 6px; font: 900 clamp(56px, 14vw, 150px)/.85 var(--display); font-stretch: 125%; letter-spacing: -.03em;
@@ -144,6 +150,7 @@ footer p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .stage .screen > * { transition: none; }
+  .js .chapter .big, .js .chapter h2 { transition: none; }
 }
 </style>
 </head>
@@ -162,12 +169,16 @@ footer p { margin: 0; }
   <section class="hero" aria-labelledby="h1">
     <p class="kicker mono">Goodrep · every set, logged honestly</p>
     <h1 id="h1" class="display fit l1">One tap<span class="sr"> per set.</span></h1>
-    <div class="phone"><span class="screen"><img src="../../assets/screens/05-summary-600.webp" srcset="../../assets/screens/05-summary-600.webp 600w, ../../assets/screens/05-summary-1000.webp 1000w" sizes="(min-width: 900px) 300px, 56vw" width="600" height="1304" fetchpriority="high" alt="Goodrep's workout summary for Upper body A: 2,168 kilograms lifted in 10 minutes, 5 sets, 49 reps, with a front-and-back muscle map."></span></div>
+    <div class="phone"><span class="screen"><img src="../../assets/screens/03-session-600.webp" srcset="../../assets/screens/03-session-600.webp 600w, ../../assets/screens/03-session-1000.webp 1000w" sizes="(min-width: 900px) 300px, 56vw" width="600" height="1304" fetchpriority="high" alt="Goodrep's logging screen: flat bench press with 80 kilograms and 8 reps filled in from last time, a 1:30 break and an Add set button."></span></div>
     <p class="display fit hl l2" aria-hidden="true">per set.</p>
     <p class="sub">Goodrep is a strength-training log for iPhone. <strong>Weight and reps come filled in from last time</strong>, so most sets take one tap while your rest timer counts down.</p>
     <ul class="facts mono"><li>No account</li><li>No ads</li><li>No tracking</li><li>Your own iCloud</li></ul>
   </section>
 
+  <div class="story-intro">
+    <p class="mono">How a session goes</p>
+    <h2 class="display">Six screens, <span class="hl">start to finish.</span></h2>
+  </div>
   <section class="story" aria-label="How a session goes">
     <div class="stage" aria-hidden="true">
       <div class="phone"><div class="screen" id="screen">
@@ -240,7 +251,7 @@ footer p { margin: 0; }
     <svg class="g" viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
     <h2 class="display" id="cta">Coming soon<br><span class="hl">to iPhone.</span></h2>
     <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
-    <p class="badge" role="status"><small>Free · iPhone · not out yet</small>Coming to the App Store</p>
+    <p class="badge"><small>Free · iPhone · not out yet</small>Coming to the App Store</p>
     <p>Questions before launch? <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a></p>
   </section>
 </main>
@@ -271,13 +282,17 @@ footer p { margin: 0; }
   // The chapter in the reading band sets the phone's screen and the progress track.
   const shots = [...document.querySelectorAll("#screen > [data-c]")];
   const pills = [...document.querySelectorAll("#track li")];
+  const chapters = [...document.querySelectorAll(".chapter")];
+  document.documentElement.classList.add("js");
+  chapters[0].classList.add("active");
   const show = (c) => {
     shots.forEach((s) => s.classList.toggle("on", +s.dataset.c === c));
+    chapters.forEach((ch) => ch.classList.toggle("active", +ch.dataset.c === c));
     pills.forEach((p, i) => p.classList.toggle("done", i <= c));
   };
   const io = new IntersectionObserver((es) => {
     for (const e of es) if (e.isIntersecting) show(+e.target.dataset.c);
-  }, { rootMargin: "-50% 0px -49% 0px" });
+  }, { rootMargin: matchMedia("(min-width: 900px)").matches ? "-50% 0px -49% 0px" : "-70% 0px -29% 0px" });
   document.querySelectorAll(".chapter").forEach((c) => io.observe(c));
   shots.forEach((s) => { if (s.tagName === "IMG") s.loading = "eager"; });
 })();
