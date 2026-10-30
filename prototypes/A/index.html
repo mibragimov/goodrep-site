@@ -1,0 +1,278 @@
+<!doctype html>
+<!--
+  Variant A · "Six sets" — a type-only manifesto in chartreuse and gym-floor black, paced like a workout:
+  six statements, one per screen, each line stretched to the full width; the app itself appears only at the end.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goodrep: every set, logged honestly</title>
+<meta name="description" content="Goodrep is a strength-training log for iPhone. Log a set in a tap, rest on a timer that starts itself, and keep your data in your own iCloud. No account, no ads, no tracking.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="Goodrep: every set, logged honestly">
+<meta property="og:description" content="A strength-training log for iPhone. No account, no ads, no tracking.">
+<meta property="og:image" content="https://goodrep.fitness/assets/brand/icon-512.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%230A0A0A'/%3E%3Cg fill='%23D4FF3A'%3E%3Cpath d='M515 144h226l56 74-94 75H477l-56-74z'/%3E%3Cpath d='M410 228l56 74-31 126-94 74-56-74 31-125z'/%3E%3Cpath d='M535 437h133l56 76-94 74H498z'/%3E%3Cpath d='M337 521l56 75-31 125-94 75-56-76 31-124z'/%3E%3Cpath d='M369 730h226l56 75-94 75H331l-56-75z'/%3E%3Cpath d='M731 521l56 75-31 125-94 75-56-75 31-125z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --bg: #0A0A0A; --surface: #161616; --surface2: #232323;
+  --text: #F3F3EE; --text2: #B2B2AC; --text3: #8A8A84;
+  --volt: #D4FF3A; --on-volt: #0A0A0A;
+  --display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --pad: clamp(16px, 4vw, 56px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--volt); outline-offset: 3px; }
+.volt :focus-visible { outline-color: var(--on-volt); }
+.skip { position: absolute; left: 8px; top: -60px; z-index: 20; background: var(--volt); color: var(--on-volt);
+  padding: 10px 14px; font: 700 13px var(--mono); text-transform: uppercase; }
+.skip:focus { top: 8px; }
+.mono { font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; }
+
+/* Header: the mark and the six target pills, as in the app's session screen */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 10; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px var(--pad); pointer-events: none; --ink: var(--text); color: var(--ink); transition: color .2s; }
+.top.on-volt { --ink: var(--on-volt); }
+.top > * { pointer-events: auto; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink);
+  font: 900 15px/1 var(--display); font-stretch: 125%; letter-spacing: .02em; }
+.brand svg { width: 26px; height: 26px; }
+.brand svg path { fill: currentColor; }
+.pills { display: flex; align-items: center; gap: 10px; }
+.pills ol { display: flex; gap: 5px; margin: 0; padding: 0; list-style: none; }
+.pills li { width: 22px; height: 8px; border-radius: 8px; border: 2px solid currentColor; }
+.pills li.done { background: currentColor; }
+
+/* A set: one statement per screen */
+.set { position: relative; min-height: min(100svh, 1100px); display: flex; flex-direction: column; justify-content: center;
+  padding: 88px var(--pad) 56px; scroll-snap-align: start; overflow: hidden; }
+.set.volt { background: var(--volt); color: var(--on-volt); }
+.set .label { margin: 0 0 clamp(16px, 3vh, 32px); color: var(--text2); }
+@media (max-width: 899px) {
+  .set:not(.final) { justify-content: space-between; }
+  .set:not(.final) .label { margin-bottom: auto; }
+  .set:not(.final) h1, .set:not(.final) h2 { margin: auto 0; }
+}
+.set.volt .label { color: rgba(10,10,10,.72); }
+h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%; text-transform: uppercase;
+  line-height: .9; letter-spacing: -.01em; }
+.fit { display: block; width: max-content; max-width: none; white-space: nowrap; font-size: clamp(44px, 12.5vw, 200px); }
+.hl { color: var(--volt); }
+.note { max-width: 34rem; margin: clamp(20px, 4vh, 44px) 0 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--text2); }
+.set.volt .note { color: rgba(10,10,10,.78); }
+.note strong { color: var(--text); font-weight: 600; }
+.set.volt .note strong { color: var(--on-volt); }
+.row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; }
+.down { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 14px 18px; border: 2px solid var(--volt);
+  color: var(--volt); text-decoration: none; font: 700 13px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.down:hover { background: var(--volt); color: var(--on-volt); }
+
+/* The log quote in set 3, set like the app's set list */
+.log { margin: clamp(20px, 4vh, 40px) 0 0; padding: 0; list-style: none; max-width: 30rem; font: 500 15px/1.9 var(--mono); }
+.log li { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--surface2); }
+.log .d { color: var(--text3); }
+.log .now { color: var(--volt); }
+
+/* The big number in set 2 */
+.clock { font: 900 clamp(64px, 22vw, 360px)/.85 var(--display); font-stretch: 125%; letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums; }
+
+/* Final: the app appears */
+.final { min-height: auto; padding-top: 120px; }
+.final-grid { display: grid; gap: clamp(32px, 6vw, 96px); align-items: start; }
+@media (min-width: 900px) { .final-grid { grid-template-columns: minmax(280px, 380px) 1fr; } }
+.phone { position: relative; width: min(78vw, 380px); margin: 0 auto; aspect-ratio: 1320 / 2868;
+  border-radius: 15% / 7%; background: #1b1b1b; box-shadow: inset 0 0 0 2px #3a3a3a, 0 0 0 1px #000; }
+.phone img { position: absolute; top: 1.47%; left: 3.2%; width: 93.6%; height: 97.06%; border-radius: 12.5% / 5.8%; }
+.phone::after { content: ""; position: absolute; top: 4.6%; left: 50%; width: 27%; height: 2.9%; transform: translateX(-50%);
+  background: #000; border-radius: 99px; }
+.spec { margin: 0; padding: 0; list-style: none; font: 500 clamp(13px, 1.2vw, 15px)/1.4 var(--mono); text-transform: uppercase;
+  letter-spacing: .04em; }
+.spec li { display: flex; align-items: baseline; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--surface2); }
+.spec .k { color: var(--text2); }
+.spec .dots { flex: 1; border-bottom: 2px dotted #4a4a46; transform: translateY(-4px); min-width: 16px; }
+.spec .v { color: var(--text); text-align: right; }
+.spec .v.pro::after { content: "PRO"; margin-left: 8px; padding: 1px 5px; background: var(--volt); color: var(--on-volt);
+  font-weight: 700; font-size: 11px; }
+.store { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 40px; }
+.badge { display: inline-flex; align-items: center; gap: 12px; padding: 16px 22px; background: var(--volt); color: var(--on-volt);
+  font: 900 15px/1.1 var(--display); font-stretch: 125%; text-transform: uppercase; text-decoration: none; letter-spacing: .02em; }
+.badge small { display: block; font: 700 11px var(--mono); letter-spacing: .06em; opacity: .72; }
+.badge svg { width: 22px; height: 22px; flex: none; }
+.store p { margin: 0; color: var(--text2); max-width: 26rem; }
+
+/* Footer: the name at full width, then the legal links */
+footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
+.wordmark { display: block; margin: 0 0 28px; font: 900 16vw/.8 var(--display); font-stretch: 125%; letter-spacing: -.02em;
+  color: var(--surface2); white-space: nowrap; user-select: none; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--text2); }
+.foot nav ul { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
+.foot a { color: var(--text); text-underline-offset: 4px; }
+.foot a:hover { color: var(--volt); }
+.foot nav a { display: inline-block; padding: 6px 0; }
+
+/* Motion: lines rise into place as a set comes into view (only with JS, never with reduced motion) */
+.js .set .fit, .js .set .note, .js .set .log, .js .set .label { opacity: 0; transform: translateY(.35em);
+  transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.js .set.in .fit, .js .set.in .note, .js .set.in .log, .js .set.in .label { opacity: 1; transform: none; }
+.js .set.in .fit:nth-child(2) { transition-delay: .06s; } .js .set.in .fit:nth-child(3) { transition-delay: .12s; }
+.js .set.in .fit:nth-child(4) { transition-delay: .18s; } .js .set.in .note { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .set .fit, .js .set .note, .js .set .log, .js .set .label { opacity: 1; transform: none; transition: none; }
+}
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#main" aria-label="Goodrep, back to top">
+    <svg viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
+    GOODREP
+  </a>
+  <div class="pills mono" aria-hidden="true"><span id="setlabel">SET 1/6</span><ol id="pills"><li class="done"></li><li></li><li></li><li></li><li></li><li></li></ol></div>
+</header>
+
+<main id="main">
+  <section class="set" aria-labelledby="s1">
+    <p class="label mono">Goodrep · a training log for iPhone</p>
+    <h1 id="s1"><span class="fit">Every set,</span><span class="fit">logged</span><span class="fit hl">honestly.</span></h1>
+    <div class="row">
+      <p class="note">A strength-training log for people who lift. <strong>No account, no ads, no tracking.</strong> Your workouts stay on your iPhone and in your own iCloud.</p>
+      <!-- TODO: when the app is live, point this at the App Store URL instead of the #appstore section -->
+      <a class="down" href="#appstore">Coming to the App Store ↓</a>
+    </div>
+  </section>
+
+  <section class="set volt" aria-labelledby="s2">
+    <p class="label mono">Set 2 · logging</p>
+    <h2 id="s2"><span class="fit">One tap.</span><span class="fit">Next set.</span></h2>
+    <p class="note">Weight and reps come <strong>filled in from last time</strong>, so most sets take a single tap. Kilos, pounds or stone, switched right from the weight field.</p>
+  </section>
+
+  <section class="set" aria-labelledby="s3">
+    <p class="label mono">Set 3 · rest</p>
+    <h2 id="s3"><span class="fit">Rest.</span><span class="fit">It starts</span><span class="fit">itself.</span></h2>
+    <p class="note">After every set a <strong>rest timer can start on its own</strong>, with a sound, an optional spoken cue and a notification when the app is in the background.</p>
+  </section>
+
+  <section class="set" aria-labelledby="s4">
+    <p class="label mono">Set 4 · history</p>
+    <h2 id="s4"><span class="fit">Beat</span><span class="fit hl">last time.</span></h2>
+    <ul class="log" aria-label="Example of earlier sets shown under the entry fields">
+      <li><span class="d">Yesterday</span><span>01</span><span class="now">80 kg × 8</span></li>
+      <li><span class="d">Oct 25</span><span>01</span><span>77.5 kg × 8</span></li>
+      <li><span class="d">Oct 25</span><span>02</span><span>77.5 kg × 7</span></li>
+      <li><span class="d">Oct 25</span><span>03</span><span>77.5 kg × 6</span></li>
+    </ul>
+    <p class="note">Your earlier sessions sit <strong>right under the entry fields</strong>, so you always know the number to beat.</p>
+  </section>
+
+  <section class="set volt" aria-labelledby="s5">
+    <p class="label mono">Set 5 · privacy</p>
+    <h2 id="s5"><span class="fit">Nobody</span><span class="fit">is watching.</span></h2>
+    <p class="note"><strong>No sign-up, no ads, no analytics.</strong> Workouts sync through your private iCloud database, which only your Apple Account can read. We never see your training or your health data.</p>
+  </section>
+
+  <section class="set" aria-labelledby="s6">
+    <p class="label mono">Set 6 · price</p>
+    <h2 id="s6"><span class="fit">Pay once.</span><span class="fit hl">Or never.</span></h2>
+    <p class="note">Logging, timers, history, iCloud sync, Apple Health and CSV export are free. <strong>Goodrep Pro is a one-time unlock</strong> for full charts, body charts and alternate app icons. No subscription, ever.</p>
+  </section>
+
+  <section class="set final" id="appstore" aria-labelledby="s7">
+    <p class="label mono">Workout done · this is the app</p>
+    <div class="final-grid">
+      <div class="phone"><img src="../../assets/screens/03-session-600.webp" srcset="../../assets/screens/03-session-600.webp 600w, ../../assets/screens/03-session-1000.webp 1000w" sizes="(min-width: 900px) 380px, 78vw" width="600" height="1304" loading="lazy" decoding="async" alt="Goodrep's logging screen: Flat bench press, set 1, weight 80 kilograms, 8 reps, a 1:30 break timer and an Add set button, with yesterday's sets listed below."></div>
+      <div>
+        <h2 id="s7"><span class="fit">Goodrep.</span></h2>
+        <ul class="spec" aria-label="What is in the app">
+          <li><span class="k">Exercises</span><span class="dots"></span><span class="v">400+, picked on a body map</span></li>
+          <li><span class="k">Workouts</span><span class="dots"></span><span class="v">Targets, supersets, headers</span></li>
+          <li><span class="k">Rest timer</span><span class="dots"></span><span class="v">Starts itself · sound · voice</span></li>
+          <li><span class="k">Units</span><span class="dots"></span><span class="v">kg · lb · st</span></li>
+          <li><span class="k">History</span><span class="dots"></span><span class="v">Calendar of every training day</span></li>
+          <li><span class="k">Summary</span><span class="dots"></span><span class="v">Volume, muscle map, share image</span></li>
+          <li><span class="k">Charts</span><span class="dots"></span><span class="v pro">Top weight · reps, est. 1RM, volume</span></li>
+          <li><span class="k">Body</span><span class="dots"></span><span class="v">Weight, body fat, tape</span></li>
+          <li><span class="k">Apple Health</span><span class="dots"></span><span class="v">Optional</span></li>
+          <li><span class="k">Sync</span><span class="dots"></span><span class="v">Your own iCloud</span></li>
+          <li><span class="k">Export</span><span class="dots"></span><span class="v">CSV, and back in</span></li>
+          <li><span class="k">Account</span><span class="dots"></span><span class="v">None</span></li>
+        </ul>
+        <div class="store">
+          <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
+          <a class="badge" href="#appstore" aria-label="Goodrep is coming to the App Store">
+            <svg viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
+            <span><small>iPhone · free</small>Coming to the App Store</span>
+          </a>
+          <p>Questions before launch? Write to <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="wordmark" aria-hidden="true"><span class="fit">GOODREP</span></span>
+  <div class="foot mono">
+    <nav aria-label="Legal and support">
+      <ul>
+        <li><a href="/privacy">Privacy policy</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a></li>
+      </ul>
+    </nav>
+    <p style="margin:6px 0 0">© 2026 Mukhammadjon Ibragimov</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Fit each display line to the width of its block, like a poster; capped so short words stay a sane size.
+  const lines = [...document.querySelectorAll(".fit")];
+  const fit = () => {
+    for (const el of lines) {
+      const box = el.parentElement.getBoundingClientRect().width;
+      el.style.fontSize = "100px";
+      const w = el.scrollWidth;
+      const cap = Math.max(window.innerHeight * 0.26, 64);
+      el.style.fontSize = Math.min((100 * box) / w, cap) + "px";
+    }
+  };
+  document.fonts.ready.then(fit);
+  new ResizeObserver(fit).observe(document.body);
+
+  // Count the sets as they come into view; the header pills fill like the app's target pills.
+  const sets = [...document.querySelectorAll(".set")];
+  const pills = [...document.querySelectorAll("#pills li")];
+  const label = document.getElementById("setlabel");
+  const top = document.querySelector(".top");
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add("in");
+      const i = sets.indexOf(e.target);
+      pills.forEach((p, n) => p.classList.toggle("done", n <= Math.min(i, 5)));
+      label.textContent = i >= 6 ? "DONE ✓" : "SET " + (i + 1) + "/6";
+      top.classList.toggle("on-volt", e.target.classList.contains("volt"));
+    }
+  }, { threshold: 0.35 });
+  sets.forEach((s) => io.observe(s));
+})();
+</script>
+</body>
+</html>
