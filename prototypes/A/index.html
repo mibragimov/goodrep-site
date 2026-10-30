@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:title" content="Goodrep: every set, logged honestly">
 <meta property="og:description" content="A strength-training log for iPhone. No account, no ads, no tracking.">
-<meta property="og:image" content="https://goodrep.fitness/assets/brand/icon-512.png">
+<meta property="og:image" content="https://goodrep.fitness/assets/brand/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%230A0A0A'/%3E%3Cg fill='%23D4FF3A'%3E%3Cpath d='M515 144h226l56 74-94 75H477l-56-74z'/%3E%3Cpath d='M410 228l56 74-31 126-94 74-56-74 31-125z'/%3E%3Cpath d='M535 437h133l56 76-94 74H498z'/%3E%3Cpath d='M337 521l56 75-31 125-94 75-56-76 31-124z'/%3E%3Cpath d='M369 730h226l56 75-94 75H331l-56-75z'/%3E%3Cpath d='M731 521l56 75-31 125-94 75-56-75 31-125z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,17 +53,14 @@ a { color: inherit; }
 .pills ol { display: flex; gap: 5px; margin: 0; padding: 0; list-style: none; }
 .pills li { width: 22px; height: 8px; border-radius: 8px; border: 2px solid currentColor; }
 .pills li.done { background: currentColor; }
+@media (max-width: 420px) { #setlabel { display: none; } .pills li { width: 16px; } }
 
 /* A set: one statement per screen */
 .set { position: relative; min-height: min(100svh, 1100px); display: flex; flex-direction: column; justify-content: center;
   padding: 88px var(--pad) 56px; scroll-snap-align: start; overflow: hidden; }
 .set.volt { background: var(--volt); color: var(--on-volt); }
 .set .label { margin: 0 0 clamp(16px, 3vh, 32px); color: var(--text2); }
-@media (max-width: 899px) {
-  .set:not(.final) { justify-content: space-between; }
-  .set:not(.final) .label { margin-bottom: auto; }
-  .set:not(.final) h1, .set:not(.final) h2 { margin: auto 0; }
-}
+
 .set.volt .label { color: rgba(10,10,10,.72); }
 h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%; text-transform: uppercase;
   line-height: .9; letter-spacing: -.01em; }
@@ -78,11 +75,10 @@ h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch:
   color: var(--volt); text-decoration: none; font: 700 13px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .down:hover { background: var(--volt); color: var(--on-volt); }
 
-/* The log quote in set 3, set like the app's set list */
-.log { margin: clamp(20px, 4vh, 40px) 0 0; padding: 0; list-style: none; max-width: 30rem; font: 500 15px/1.9 var(--mono); }
-.log li { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--surface2); }
-.log .d { color: var(--text3); }
-.log .now { color: var(--volt); }
+/* Set 4: a real crop of the app's set list */
+.crop { margin: clamp(20px, 4vh, 40px) 0 0; max-width: 32rem; }
+.crop img { display: block; width: 100%; height: auto; border: 1px solid var(--surface2); border-radius: 14px; }
+.crop figcaption { margin-top: 8px; color: var(--text3); font-size: 11px; }
 
 /* The big number in set 2 */
 .clock { font: 900 clamp(64px, 22vw, 360px)/.85 var(--display); font-stretch: 125%; letter-spacing: -.03em;
@@ -111,6 +107,7 @@ h1, h2 { margin: 0; font-family: var(--display); font-weight: 900; font-stretch:
 .badge small { display: block; font: 700 11px var(--mono); letter-spacing: .06em; opacity: .72; }
 .badge svg { width: 22px; height: 22px; flex: none; }
 .store p { margin: 0; color: var(--text2); max-width: 26rem; }
+.store .badge { color: var(--on-volt); max-width: none; }
 
 /* Footer: the name at full width, then the legal links */
 footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
@@ -123,17 +120,16 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
 .foot nav a { display: inline-block; padding: 6px 0; }
 
 /* Motion: lines rise into place as a set comes into view (only with JS, never with reduced motion) */
-.js .set .fit, .js .set .note, .js .set .log, .js .set .label { opacity: 0; transform: translateY(.35em);
+.js .set .fit, .js .set .note, .js .set .crop, .js .set .label { opacity: 0; transform: translateY(.35em);
   transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
-.js .set.in .fit, .js .set.in .note, .js .set.in .log, .js .set.in .label { opacity: 1; transform: none; }
+.js .set.in .fit, .js .set.in .note, .js .set.in .crop, .js .set.in .label { opacity: 1; transform: none; }
 .js .set.in .fit:nth-child(2) { transition-delay: .06s; } .js .set.in .fit:nth-child(3) { transition-delay: .12s; }
 .js .set.in .fit:nth-child(4) { transition-delay: .18s; } .js .set.in .note { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .set .fit, .js .set .note, .js .set .log, .js .set .label { opacity: 1; transform: none; transition: none; }
+  .js .set .fit, .js .set .note, .js .set .crop, .js .set .label { opacity: 1; transform: none; transition: none; }
 }
 </style>
-<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -172,12 +168,10 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
   <section class="set" aria-labelledby="s4">
     <p class="label mono">Set 4 · history</p>
     <h2 id="s4"><span class="fit">Beat</span><span class="fit hl">last time.</span></h2>
-    <ul class="log" aria-label="Example of earlier sets shown under the entry fields">
-      <li><span class="d">Yesterday</span><span>01</span><span class="now">80 kg × 8</span></li>
-      <li><span class="d">Oct 25</span><span>01</span><span>77.5 kg × 8</span></li>
-      <li><span class="d">Oct 25</span><span>02</span><span>77.5 kg × 7</span></li>
-      <li><span class="d">Oct 25</span><span>03</span><span>77.5 kg × 6</span></li>
-    </ul>
+    <figure class="crop">
+      <img src="../../assets/screens/03-session-history-900.webp" width="900" height="545" loading="lazy" decoding="async" alt="From Goodrep's logging screen: no sets yet today; yesterday one set of 80 kg × 8; October 25, three sets of 77.5 kg for 8, 7 and 6 reps.">
+      <figcaption class="mono">Under the entry fields, in the app</figcaption>
+    </figure>
     <p class="note">Your earlier sessions sit <strong>right under the entry fields</strong>, so you always know the number to beat.</p>
   </section>
 
@@ -190,7 +184,7 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
   <section class="set" aria-labelledby="s6">
     <p class="label mono">Set 6 · price</p>
     <h2 id="s6"><span class="fit">Pay once.</span><span class="fit hl">Or never.</span></h2>
-    <p class="note">Logging, timers, history, iCloud sync, Apple Health and CSV export are free. <strong>Goodrep Pro is a one-time unlock</strong> for full charts, body charts and alternate app icons. No subscription, ever.</p>
+    <p class="note">Logging, timers, history, iCloud sync, Apple Health and CSV export are free. <strong>Goodrep Pro is a one-time unlock</strong> for full charts, body charts and alternate app icons, shared with your family. No subscription, ever.</p>
   </section>
 
   <section class="set final" id="appstore" aria-labelledby="s7">
@@ -215,10 +209,10 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
         </ul>
         <div class="store">
           <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
-          <a class="badge" href="#appstore" aria-label="Goodrep is coming to the App Store">
+          <p class="badge" role="status">
             <svg viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
-            <span><small>iPhone · free</small>Coming to the App Store</span>
-          </a>
+            <span><small>iPhone · free · not out yet</small>Coming to the App Store</span>
+          </p>
           <p>Questions before launch? Write to <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a>.</p>
         </div>
       </div>
@@ -242,6 +236,7 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
 
 <script>
 (() => {
+  document.documentElement.classList.add("js");
   // Fit each display line to the width of its block, like a poster; capped so short words stay a sane size.
   const lines = [...document.querySelectorAll(".fit")];
   const fit = () => {
@@ -268,10 +263,14 @@ footer { padding: 64px var(--pad) 32px; border-top: 1px solid var(--surface2); }
       const i = sets.indexOf(e.target);
       pills.forEach((p, n) => p.classList.toggle("done", n <= Math.min(i, 5)));
       label.textContent = i >= 6 ? "DONE ✓" : "SET " + (i + 1) + "/6";
-      top.classList.toggle("on-volt", e.target.classList.contains("volt"));
     }
   }, { threshold: 0.35 });
   sets.forEach((s) => io.observe(s));
+  const band = () => new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) top.classList.toggle("on-volt", e.target.classList.contains("volt"));
+  }, { rootMargin: "-26px 0px " + (28 - window.innerHeight) + "px 0px" });
+  const bandIo = band();
+  [...sets, document.querySelector("footer")].forEach((s) => bandIo.observe(s));
 })();
 </script>
 </body>

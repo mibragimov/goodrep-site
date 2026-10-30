@@ -7,15 +7,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Goodrep: a training log for iPhone</title>
+<title>Goodrep: one tap per set</title>
 <meta name="description" content="Goodrep is a strength-training log for iPhone. Pick exercises on a body map, log a set in a tap, see what you lifted. No account, no ads, no tracking.">
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:title" content="Goodrep: a training log for iPhone">
 <meta property="og:description" content="Every set, logged honestly. No account, no ads, no tracking.">
-<meta property="og:image" content="https://goodrep.fitness/assets/brand/icon-512.png">
+<meta property="og:image" content="https://goodrep.fitness/assets/brand/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%230A0A0A'/%3E%3Cg fill='%23D4FF3A'%3E%3Cpath d='M515 144h226l56 74-94 75H477l-56-74z'/%3E%3Cpath d='M410 228l56 74-31 126-94 74-56-74 31-125z'/%3E%3Cpath d='M535 437h133l56 76-94 74H498z'/%3E%3Cpath d='M337 521l56 75-31 125-94 75-56-76 31-124z'/%3E%3Cpath d='M369 730h226l56 75-94 75H331l-56-75z'/%3E%3Cpath d='M731 521l56 75-31 125-94 75-56-75 31-125z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="../../assets/screens/03-session-600.webp" imagesrcset="../../assets/screens/03-session-600.webp 600w, ../../assets/screens/03-session-1000.webp 1000w" imagesizes="(min-width: 900px) 340px, 56vw">
+<link rel="preload" as="image" href="../../assets/screens/05-summary-600.webp" imagesrcset="../../assets/screens/05-summary-600.webp 600w, ../../assets/screens/05-summary-1000.webp 1000w" imagesizes="(min-width: 900px) 300px, 56vw">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -41,12 +41,12 @@ img { display: block; max-width: 100%; height: auto; }
   padding: 10px 14px; font: 700 13px var(--mono); text-transform: uppercase; }
 .skip:focus { top: 8px; }
 .mono { font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; }
-.display { margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%; text-transform: uppercase;
+.display { text-wrap: balance; margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%; text-transform: uppercase;
   line-height: .92; letter-spacing: -.01em; }
 .hl { color: var(--volt); }
 
 header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; height: 56px; padding: 0 var(--pad); background: rgba(10,10,10,.86);
+  gap: 12px; height: 56px; padding: 0 var(--pad); background: rgba(10,10,10,.97);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--surface2); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 900 15px/1 var(--display);
   font-stretch: 125%; letter-spacing: .02em; }
@@ -66,9 +66,10 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
 /* Hero: the headline split around the phone */
 .hero { padding: 88px var(--pad) 40px; display: grid; justify-items: center; text-align: center; overflow: hidden; }
 .hero .fit { display: block; width: max-content; white-space: nowrap; font-size: clamp(40px, 10.5vw, 150px); position: relative; z-index: 3; }
-.hero .phone { height: min(56svh, 130vw, 640px); width: auto; margin: -0.18em 0; }
-.hero h1 { display: contents; }
-.hero .l1 { order: 1; } .hero .phone { order: 2; } .hero .l2 { order: 3; } .hero .sub { order: 4; } .hero .facts { order: 5; }
+.hero .phone { height: min(52svh, 130vw, 600px); width: auto; margin: -0.18em 0; }
+.hero .kicker { margin: 0 0 18px; color: var(--text2); }
+.hero .l2 { margin: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .hero .sub { max-width: 34rem; margin: 28px auto 0; color: var(--text2); font-size: clamp(17px, 1.5vw, 20px); }
 .hero .sub strong { color: var(--text); font-weight: 600; }
 .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin: 22px 0 0; padding: 0; list-style: none; color: var(--text2); }
@@ -76,7 +77,7 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
 
 /* Story: pinned phone, scrolling chapters */
 .story { position: relative; display: grid; padding: 0 var(--pad); }
-.stage { position: sticky; top: 56px; z-index: 5; height: calc(58svh - 56px); min-height: 330px; display: grid;
+.stage { position: sticky; top: 56px; z-index: 5; height: calc(46svh - 56px + 56px); min-height: 300px; display: grid;
   grid-template-rows: 1fr auto; justify-items: center; gap: 10px; padding: 12px 0 10px; background: var(--bg); }
 .stage .phone { height: 100%; max-height: 100%; }
 .stage .screen > * { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .45s ease; }
@@ -87,10 +88,13 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
 .track li { width: 26px; height: 8px; border-radius: 8px; border: 2px solid var(--volt); }
 .track li.done { background: var(--volt); }
 .chapters { position: relative; z-index: 1; }
-.chapter { min-height: 72svh; padding: 28px 0 48px; display: flex; flex-direction: column; justify-content: flex-start; }
+.chapter { min-height: 64svh; padding: 24px 0 40px; display: flex; flex-direction: column; justify-content: flex-start; }
 .chapter .label { margin: 0 0 14px; color: var(--text2); }
 .chapter .label b { color: var(--volt); font-weight: 700; }
-.chapter h2 { font-size: clamp(34px, 7.4vw, 72px); }
+.chapter .big { margin: 0 0 6px; font: 900 clamp(56px, 14vw, 150px)/.85 var(--display); font-stretch: 125%; letter-spacing: -.03em;
+  color: var(--volt); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chapter .big small { font: 700 clamp(14px, 1.6vw, 20px) var(--mono); letter-spacing: .04em; margin-left: .3em; color: var(--text2); }
+.chapter h2 { font-size: clamp(26px, 4.2vw, 48px); }
 .chapter p { max-width: 30rem; margin: 18px 0 0; color: var(--text2); font-size: clamp(17px, 1.4vw, 20px); }
 .chapter p strong { color: var(--text); font-weight: 600; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
@@ -101,7 +105,7 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
   .story { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(32px, 6vw, 120px); max-width: 1320px; margin: 0 auto; }
   .stage { grid-column: 2; grid-row: 1; top: 56px; height: calc(100vh - 56px); max-height: 900px; padding: 32px 0 24px; background: transparent; }
   .chapters { grid-column: 1; grid-row: 1; }
-  .chapter { min-height: min(100vh, 900px); justify-content: center; padding: 0; }
+  .chapter { min-height: min(72vh, 700px); justify-content: center; padding: 0; }
 }
 
 /* Free and Pro */
@@ -127,6 +131,7 @@ header.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align
   background: var(--volt); color: var(--on-volt); text-decoration: none; font: 900 16px/1.1 var(--display); font-stretch: 125%; text-transform: uppercase; }
 .badge small { font: 700 11px var(--mono); letter-spacing: .06em; opacity: .72; }
 .cta p { color: var(--text2); margin: 22px 0 0; }
+.cta .badge { color: var(--on-volt); }
 
 footer { padding: 32px var(--pad) 40px; border-top: 1px solid var(--surface2); display: flex; flex-wrap: wrap; gap: 16px;
   justify-content: space-between; align-items: center; color: var(--text2); }
@@ -154,9 +159,11 @@ footer p { margin: 0; }
 
 <main id="main">
   <section class="hero" aria-labelledby="h1">
-    <h1 id="h1"><span class="display fit l1">Every set,</span> <span class="display fit hl l2">logged honestly.</span></h1>
-    <div class="phone"><span class="screen"><img src="../../assets/screens/03-session-600.webp" srcset="../../assets/screens/03-session-600.webp 600w, ../../assets/screens/03-session-1000.webp 1000w" sizes="(min-width: 900px) 340px, 56vw" width="600" height="1304" fetchpriority="high" alt="Goodrep's logging screen: Flat bench press, weight 80 kilograms, 8 reps, a 1:30 break and an Add set button."></span></div>
-    <p class="sub">Goodrep is a strength-training log for iPhone. <strong>Build your workouts once, then log each set in a tap</strong> while your rest timer counts down.</p>
+    <p class="kicker mono">Goodrep · every set, logged honestly</p>
+    <h1 id="h1" class="display fit l1">One tap<span class="sr"> per set.</span></h1>
+    <div class="phone"><span class="screen"><img src="../../assets/screens/05-summary-600.webp" srcset="../../assets/screens/05-summary-600.webp 600w, ../../assets/screens/05-summary-1000.webp 1000w" sizes="(min-width: 900px) 300px, 56vw" width="600" height="1304" fetchpriority="high" alt="Goodrep's workout summary for Upper body A: 2,168 kilograms lifted in 10 minutes, 5 sets, 49 reps, with a front-and-back muscle map."></span></div>
+    <p class="display fit hl l2" aria-hidden="true">per set.</p>
+    <p class="sub">Goodrep is a strength-training log for iPhone. <strong>Weight and reps come filled in from last time</strong>, so most sets take one tap while your rest timer counts down.</p>
     <ul class="facts mono"><li>No account</li><li>No ads</li><li>No tracking</li><li>Your own iCloud</li></ul>
   </section>
 
@@ -176,35 +183,39 @@ footer p { margin: 0; }
     <div class="chapters">
       <article class="chapter" data-c="0">
         <p class="label mono"><b>01</b> / 06 · Pick</p>
+        <p class="big" aria-hidden="true">400+</p>
         <h2 class="display">Tap a muscle.</h2>
-        <p>Choose from <strong>more than 400 exercises</strong> by tapping a muscle group on a front-and-back body map, or create your own and add a photo.</p>
+        <p>More than <strong>400 exercises</strong> on a front-and-back body map. Make your own, with a photo.</p>
       </article>
       <article class="chapter" data-c="1">
         <p class="label mono"><b>02</b> / 06 · Plan</p>
+        <p class="big" aria-hidden="true">3×8–10</p>
         <h2 class="display">Build it once.</h2>
-        <p>Set targets such as <strong>3 × 8–10</strong>, pair exercises into supersets, split a long workout with headers and give each exercise its own rest time.</p>
-        <ul class="chips mono"><li>Targets</li><li>Supersets</li><li>Breaks</li><li>Timed</li></ul>
+        <p>Targets, <strong>supersets</strong>, headers for warm-up and main lifts, and a rest time per exercise.</p>
       </article>
       <article class="chapter" data-c="2">
         <p class="label mono"><b>03</b> / 06 · Log</p>
-        <h2 class="display">One tap <span class="hl">a set.</span></h2>
-        <p>Swipe from one exercise to the next. <strong>Weight and reps are filled in from last time</strong>, and your earlier sessions sit right under the fields, so you know what to beat. The rest timer can start by itself.</p>
-        <ul class="chips mono"><li>kg · lb · st</li><li>Rest timer</li><li>Spoken cue</li></ul>
+        <p class="big" aria-hidden="true">80<small>kg × 8</small></p>
+        <h2 class="display">Beat last time.</h2>
+        <p><strong>Filled in from last time</strong>, with your earlier sets right under the fields. The rest timer can start by itself.</p>
       </article>
       <article class="chapter" data-c="3">
         <p class="label mono"><b>04</b> / 06 · Finish</p>
+        <p class="big" aria-hidden="true">2,168<small>kg</small></p>
         <h2 class="display">See what you moved.</h2>
-        <p>The summary shows <strong>sets, reps, volume and time</strong>, plus a front-and-back map of the muscles you trained. Share it as an image.</p>
+        <p>Sets, reps, volume, time and a <strong>map of the muscles you trained</strong>. Share it as an image.</p>
       </article>
       <article class="chapter" data-c="4">
         <p class="label mono"><b>05</b> / 06 · Look back</p>
+        <p class="big" aria-hidden="true">6<small>days in Oct</small></p>
         <h2 class="display">Every day on record.</h2>
-        <p>A calendar marks every training day; open one to see each set you did. <strong>Charts follow your lifts</strong>, and the Body tab keeps your weight, body fat and tape measurements.</p>
+        <p>A calendar of every training day, <strong>charts of your lifts</strong>, and your weight and tape measurements.</p>
       </article>
       <article class="chapter" data-c="5">
         <p class="label mono"><b>06</b> / 06 · Yours</p>
+        <p class="big" aria-hidden="true">0<small>accounts</small></p>
         <h2 class="display">Nobody else <span class="hl">sees it.</span></h2>
-        <p><strong>No sign-up, no ads, no analytics.</strong> Workouts sync through your private iCloud database, which only your Apple Account can read. Apple Health is optional. Export every set as CSV whenever you like.</p>
+        <p><strong>No sign-up, no ads, no analytics.</strong> Your private iCloud, Apple Health if you want it, CSV whenever you like.</p>
       </article>
     </div>
   </section>
@@ -228,7 +239,7 @@ footer p { margin: 0; }
     <svg class="g" viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
     <h2 class="display" id="cta">Coming soon<br><span class="hl">to iPhone.</span></h2>
     <!-- TODO: replace with the App Store badge and the app's App Store URL when the app is live -->
-    <a class="badge" href="#appstore"><small>Free · iPhone</small>Coming to the App Store</a>
+    <p class="badge" role="status"><small>Free · iPhone · not out yet</small>Coming to the App Store</p>
     <p>Questions before launch? <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a></p>
   </section>
 </main>
@@ -250,7 +261,7 @@ footer p { margin: 0; }
     const box = Math.min(document.querySelector(".hero").clientWidth - 32, 980);
     for (const el of lines) {
       el.style.fontSize = "100px";
-      el.style.fontSize = Math.min((100 * box) / el.getBoundingClientRect().width, 170) + "px";
+      el.style.fontSize = Math.min((100 * box) / el.getBoundingClientRect().width, Math.max(innerHeight * 0.15, 72)) + "px";
     }
   };
   document.fonts.ready.then(fit);
@@ -265,7 +276,7 @@ footer p { margin: 0; }
   };
   const io = new IntersectionObserver((es) => {
     for (const e of es) if (e.isIntersecting) show(+e.target.dataset.c);
-  }, { rootMargin: matchMedia("(min-width: 900px)").matches ? "-50% 0px -49% 0px" : "-72% 0px -27% 0px" });
+  }, { rootMargin: "-50% 0px -49% 0px" });
   document.querySelectorAll(".chapter").forEach((c) => io.observe(c));
   shots.forEach((s) => { if (s.tagName === "IMG") s.loading = "eager"; });
 })();
