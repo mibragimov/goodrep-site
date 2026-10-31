@@ -76,10 +76,10 @@ def display(text, label, live=False, colon_after=None, dots_cell=None):
     return f'<svg class="seg" viewBox="-6 -6 {width + 12:.0f} {H + 12}" {role}>' + "".join(parts) + "</svg>"
 
 DISPLAYS = {
-    "hero": display("GOOdrEP", "GOODREP", live=True, dots_cell=3),
+    "kg": display("80", ""), "reps": display("8", ""),
+    "clock": display(" 01 30 ", "Break timer 01:30", live=True, dots_cell=3),
     "n1": display("01", ""), "n2": display("02", ""), "n3": display("03", ""), "n4": display("04", ""),
-    "zero1": display("0", ""), "zero2": display("0", ""), "zero3": display("0", ""), "zero4": display("0", ""),
-    "one": display("1", ""), "four": display("400", ""),
+    "zero1": display("0", ""), "zero2": display("0", ""), "zero3": display("0", ""), "zero4": display("0", ""), "zero5": display("0", ""),
     "foot": display("GOOdrEP", "GOODREP"),
 }
 
