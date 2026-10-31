@@ -141,11 +141,25 @@ section { scroll-margin-top: 16px; }
 .store p { color: var(--text2); margin: 20px 0 0; }
 .store p a { color: var(--text); text-underline-offset: 4px; }
 
-/* Power-on flicker of the hero board */
-.boot .seg .on { animation: boot .7s steps(1) both; }
-.boot .seg g:nth-of-type(2) .on { animation-delay: .08s; } .boot .seg g:nth-of-type(3) .on { animation-delay: .16s; }
-@keyframes boot { 0% { fill: var(--seg-off); } 30% { fill: var(--seg-on); } 45% { fill: var(--seg-off); } 60% { fill: var(--seg-on); } }
-@media (prefers-reduced-motion: reduce) { .boot .seg .on, .done .seg .on { animation: none; } }
+/* The hero sign buzzes like a gym clock with a loose contact: every letter drops out on its own beat, non stop */
+.sign .seg .on { animation: buzz 4.8s steps(1) infinite; }
+.sign .seg g:nth-of-type(2) .on { animation-delay: -1.3s; } .sign .seg g:nth-of-type(3) .on { animation-delay: -2.9s; }
+.sign .seg g:nth-of-type(4) .on { animation-delay: -0.7s; } .sign .seg g:nth-of-type(5) .on { animation-delay: -3.7s; }
+.sign .seg g:nth-of-type(6) .on { animation-delay: -2.1s; } .sign .seg g:nth-of-type(7) .on { animation-delay: -4.3s; }
+@keyframes buzz {
+  0%, 100% { fill: var(--seg-on); }
+  4% { fill: var(--seg-dim); } 4.6% { fill: var(--seg-on); }
+  13% { fill: var(--seg-dim); } 13.4% { fill: var(--seg-off); } 14.1% { fill: var(--seg-on); }
+  31% { fill: var(--seg-dim); } 31.5% { fill: var(--seg-on); }
+  52% { fill: var(--seg-off); } 52.6% { fill: var(--seg-dim); } 53.4% { fill: var(--seg-on); }
+  71% { fill: var(--seg-dim); } 71.3% { fill: var(--seg-on); } 72.2% { fill: var(--seg-dim); } 72.7% { fill: var(--seg-on); }
+  89% { fill: var(--seg-off); } 89.5% { fill: var(--seg-on); }
+}
+.housing { --seg-dim: #6B8A14; }
+.sign { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.sign .row { display: block; padding: clamp(10px, 2vw, 24px) 0 clamp(4px, 1vw, 12px); }
+.sign .seg { width: 100%; height: auto; max-width: 700px; margin: 0 auto; }
+@media (prefers-reduced-motion: reduce) { .sign .seg .on, .done .seg .on { animation: none; } }
 </style>
 </head>
 <body>
@@ -164,14 +178,11 @@ section { scroll-margin-top: 16px; }
 
 <main id="main">
   <section class="wrap hero" aria-labelledby="h1">
-    <div class="housing readout boot">
-      <span class="tag l mono">Flat bench press</span><span class="tag r mono">Last time</span>
-      <p class="row" role="img" aria-label="Last time: 80 kilograms for 8 reps">
-        <!--seg:kg--><svg class="seg" viewBox="-6 -6 274 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g></svg><!--/seg--><span class="u mono" aria-hidden="true">kg</span>
-        <span class="x" aria-hidden="true">×</span>
-        <!--seg:reps--><svg class="seg" viewBox="-6 -6 150 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg--><span class="u mono" aria-hidden="true">reps</span>
+    <div class="housing readout sign" id="sign" title="Tap for the buzz">
+      <span class="tag l mono">Workout tracker</span><span class="tag r mono">iPhone</span>
+      <p class="row" role="img" aria-label="Goodrep">
+        <!--seg:hero--><svg class="seg" viewBox="-6 -6 894 192" aria-hidden="true"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(286.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(410.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(534.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(658.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(782.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg-->
       </p>
-      <p class="caption mono">In the fields before your first rep</p>
     </div>
     <p class="eyebrow mono">A strength-training log for iPhone</p>
     <h1 class="display" id="h1">Beat<br> <span class="hl">last time.</span></h1>
@@ -359,6 +370,23 @@ section { scroll-margin-top: 16px; }
   document.getElementById("minus").addEventListener("click", () => nudge(-15));
   document.getElementById("plus").addEventListener("click", () => nudge(15));
 })();
+</script>
+<script>
+  // A short electric buzz when the sign is tapped. Synthesised, so no audio file; nothing plays without a tap.
+  (() => {
+    const sign = document.getElementById("sign"); let ctx = null;
+    sign.addEventListener("click", () => {
+      try {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        const t = ctx.currentTime, gain = ctx.createGain(), osc = ctx.createOscillator(), sub = ctx.createOscillator();
+        osc.type = "sawtooth"; osc.frequency.value = 55; sub.type = "square"; sub.frequency.value = 110;
+        gain.gain.setValueAtTime(0.0001, t); gain.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
+        gain.gain.setValueAtTime(0.12, t + 0.18); gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.32);
+        osc.connect(gain); sub.connect(gain); gain.connect(ctx.destination);
+        osc.start(t); sub.start(t); osc.stop(t + 0.34); sub.stop(t + 0.34);
+      } catch (e) { /* no audio: the sign still buzzes visually */ }
+    });
+  })();
 </script>
 </body>
 </html>
