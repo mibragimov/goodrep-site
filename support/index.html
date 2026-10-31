@@ -1,28 +1,54 @@
 <!doctype html>
+<!-- Goodrep Support. The App Store listing links here, so the URL /support/ must keep working. Text inside <main> is the
+     owner's; the header, footer and styles are the site's shared design system (/assets/css/site.css). -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Goodrep Support</title>
+<meta name="description" content="Help with Goodrep for iPhone: iCloud sync, Apple Health, CSV export and import, deleting your data, and how to reach us at support@goodrep.fitness.">
+<link rel="canonical" href="https://goodrep.fitness/support/">
+<meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-expanded-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
 <style>
-:root { color-scheme: light dark; --bg: #ffffff; --text: #111114; --muted: #5c5c66; --accent: #c2410c; --rule: #d1d1d6; }
-@media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --muted: #a1a1aa; --accent: #ff7a45; --rule: #38383a; } }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text);
-       font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-       -webkit-text-size-adjust: 100%; }
-main { max-width: 42rem; margin: 0 auto; padding: 2rem 16px 4rem; }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 0.5rem; }
-h2 { font-size: 1.3rem; margin: 2.2rem 0 0.6rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
-h3 { font-size: 1.05rem; margin: 1.6rem 0 0.4rem; }
-p, li { overflow-wrap: anywhere; }
-ul, ol { padding-left: 1.4rem; }
-li { margin: 0.35rem 0; }
-a { color: var(--accent); }
+/* Long-form pages (privacy, support); everything else comes from /assets/css/site.css. */
+.doc { max-width: calc(var(--measure) + 2 * var(--pad)); margin: 0 auto; padding: clamp(24px, 5vw, 64px) var(--pad) var(--section); }
+.doc h1 { margin: 0 0 20px; font: 900 clamp(34px, 7vw, 64px)/.95 var(--display); font-stretch: 125%; text-transform: uppercase;
+  letter-spacing: -.01em; text-wrap: balance; }
+.doc h2 { margin: 56px 0 14px; padding-top: 28px; border-top: 1px solid var(--surface2);
+  font: 900 clamp(21px, 2.6vw, 28px)/1.05 var(--display); font-stretch: 125%; text-transform: uppercase; }
+.doc h2::before { content: ""; display: block; width: 28px; height: 6px; margin-bottom: 16px; background: var(--mark); }
+.doc h3 { margin: 32px 0 6px; font-size: 18px; line-height: 1.35; font-weight: 650; }
+.doc p, .doc li { color: var(--text2); overflow-wrap: anywhere; }
+.doc p { margin: 0 0 14px; }
+.doc strong { color: var(--text); font-weight: 650; }
+.doc ul, .doc ol { margin: 0 0 14px; padding-left: 1.4rem; }
+.doc ul { list-style: square; }
+.doc li { margin: 8px 0; padding-left: 4px; }
+.doc li::marker { color: var(--text3); font: 700 15px var(--mono); }
+.doc a { color: var(--mark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.doc a:hover { text-decoration-thickness: 3px; }
+.doc h1 + p { font-size: clamp(17px, 1.5vw, 19px); color: var(--text); }
+footer.site .foot-home { display: block; max-width: 360px; padding: 0; }
 </style>
 </head>
 <body>
-<main>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="brand" href="/" aria-label="Goodrep, home">
+    <svg viewBox="200 130 610 760" aria-hidden="true"><path d="M515 144h226l56 74-94 75H477l-56-74z"/><path d="M410 228l56 74-31 126-94 74-56-74 31-125z"/><path d="M535 437h133l56 76-94 74H498z"/><path d="M337 521l56 75-31 125-94 75-56-76 31-124z"/><path d="M369 730h226l56 75-94 75H331l-56-75z"/><path d="M731 521l56 75-31 125-94 75-56-75 31-125z"/></svg>
+    GOODREP
+  </a>
+  <nav aria-label="Pages"><ul class="mono"><li><a href="/privacy/">Privacy</a></li><li><a href="/support/" aria-current="page">Support</a></li></ul></nav>
+</header>
+
+<main id="main" class="doc">
 <h1>Goodrep Support</h1>
 <p>Goodrep is a strength-training log for iPhone. Build workouts from a library of exercises, log your sets quickly during a session with break and exercise timers, look back at your history in a calendar, follow your progress in charts, and keep track of your body weight and measurements. Your data syncs between your devices through your own iCloud account. There is no account to create, no advertising and no tracking.</p>
 <p>Need help that is not covered below? Write to <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a>. Please mention your iPhone model, the iOS version and the app version (Settings tab › About › Version).</p>
@@ -74,5 +100,21 @@ a { color: var(--accent); }
 <h2>Contact</h2>
 <p>Write to Mukhammadjon Ibragimov at <a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a>.</p>
 </main>
+
+<footer class="site">
+  <div class="wrap">
+    <a href="/" class="foot-home" aria-label="Goodrep home"><!--seg:foot--><svg class="seg" viewBox="-6 -6 894 192" role="img" aria-label="GOODREP"><g transform="translate(38.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="46.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 46.0,101.0" class="on"/></g><g transform="translate(162.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(286.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0"/></g><g transform="translate(410.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0" class="on"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(534.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(658.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0" class="on"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g><g transform="translate(782.3 0) skewX(-12)"><polygon points="25.0,0.0 75.0,0.0 86.0,11.0 75.0,22.0 25.0,22.0 14.0,11.0" class="on"/><polygon points="89.0,14.0 100.0,25.0 100.0,76.0 89.0,87.0 78.0,76.0 78.0,25.0" class="on"/><polygon points="89.0,93.0 100.0,104.0 100.0,155.0 89.0,166.0 78.0,155.0 78.0,104.0"/><polygon points="25.0,158.0 75.0,158.0 86.0,169.0 75.0,180.0 25.0,180.0 14.0,169.0"/><polygon points="11.0,93.0 22.0,104.0 22.0,155.0 11.0,166.0 0.0,155.0 0.0,104.0" class="on"/><polygon points="11.0,14.0 22.0,25.0 22.0,76.0 11.0,87.0 0.0,76.0 0.0,25.0" class="on"/><polygon points="25.0,79.0 75.0,79.0 86.0,90.0 75.0,101.0 25.0,101.0 14.0,90.0" class="on"/></g></svg><!--/seg--></a>
+    <p class="tagline">Goodrep: Workout Tracker.<br> Every set, logged honestly.</p>
+    <div class="row mono">
+      <nav aria-label="Site"><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li><a href="/support/" aria-current="page">Support</a></li>
+        <li><a href="mailto:support@goodrep.fitness">support@goodrep.fitness</a></li>
+      </ul></nav>
+      <p>© 2026 Mukhammadjon Ibragimov</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

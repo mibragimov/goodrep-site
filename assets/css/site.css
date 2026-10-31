@@ -1,0 +1,103 @@
+/* Goodrep site: the design system shared by /, /privacy/ and /support/.
+   Colours are the app's Volt tokens (docs/design/volt.md in the app repo): dark is chartreuse on black; light is ink on
+   white with a chartreuse highlighter, where chartreuse is only ever a fill behind black, never text or a line.
+   The LED housings (.housing) stay dark in both themes, like the app's full-screen timer. Page-specific rules live in
+   each page's own <style>. */
+
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 800 900; font-stretch: 125%; font-display: swap;
+  src: url("/assets/fonts/archivo-expanded-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500 700; font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-latin.woff2") format("woff2"); }
+
+:root {
+  --bg: #0A0A0A; --surface: #161616; --surface2: #232323; --line: #262626;
+  --text: #F3F3EE; --text2: #B2B2AC; --text3: #8A8A84;
+  --mark: #D4FF3A;            /* accent ink: chartreuse in dark, ink in light */
+  --volt: #D4FF3A; --on-volt: #0A0A0A;
+  --seg-on: #D4FF3A; --seg-off: #232323;
+  --display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --pad: clamp(16px, 4vw, 56px);       /* page gutter */
+  --section: clamp(56px, 9vw, 120px);  /* space above and below a section */
+  --max: 1320px;                       /* widest content */
+  --measure: 42rem;                    /* reading width */
+  color-scheme: dark light;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #FFFFFF; --surface: #F2F2EF; --surface2: #E4E4DF; --line: #D9D9D3;
+    --text: #0A0A0A; --text2: #4E4E4A; --text3: #6B6B66;
+    --mark: #0A0A0A;
+    --seg-on: #0A0A0A; --seg-off: #E4E4DF;
+    color-scheme: light dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.5 var(--body); -webkit-text-size-adjust: 100%; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.skip { position: absolute; left: 8px; top: -60px; z-index: 30; background: var(--volt); color: var(--on-volt);
+  padding: 10px 14px; font: 700 13px var(--mono); text-transform: uppercase; }
+.skip:focus { top: 8px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.mono { font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; }
+.display { text-wrap: balance; margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 125%;
+  text-transform: uppercase; line-height: .92; letter-spacing: -.01em; }
+/* Emphasis: chartreuse text in dark, a chartreuse highlighter behind ink in light. */
+.hl { color: var(--mark); }
+@media (prefers-color-scheme: light) {
+  .hl { background: var(--volt); color: var(--on-volt); padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+}
+
+/* Seven-segment displays (inline SVG from tools/segments.py) */
+.seg { display: block; width: 100%; height: auto; overflow: visible; }
+.seg polygon, .seg .colon { fill: var(--seg-off); }
+.seg .on, .seg .colon.on { fill: var(--seg-on); }
+/* The LED housing is dark in both themes. */
+.housing { --text: #F3F3EE; --text2: #B2B2AC; --text3: #8A8A84; --mark: #D4FF3A; --seg-on: #D4FF3A; --seg-off: #232323;
+  position: relative; color: var(--text); background: #161616; border: 1px solid #2C2C2C; border-radius: clamp(10px, 1.6vw, 22px);
+  padding: clamp(28px, 4vw, 56px) clamp(16px, 3vw, 48px) clamp(16px, 2.4vw, 32px);
+  box-shadow: inset 0 0 0 clamp(4px, .6vw, 8px) #101010; }
+.housing .tag { position: absolute; top: clamp(8px, 1.1vw, 16px); color: var(--text3); font-size: 12px; }
+.housing .tag.l { left: clamp(16px, 3vw, 48px); } .housing .tag.r { right: clamp(16px, 3vw, 48px); }
+
+/* Buttons. A ghost button is an outline in the accent ink. */
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border: 2px solid var(--volt);
+  background: var(--volt); color: var(--on-volt); text-decoration: none; font: 900 14px/1.15 var(--display); font-stretch: 125%;
+  text-transform: uppercase; letter-spacing: .02em; text-align: center; cursor: pointer; }
+.btn:hover { background: var(--bg); color: var(--mark); border-color: var(--mark); }
+.btn.ghost { background: transparent; color: var(--mark); border-color: var(--mark); }
+.btn.ghost:hover { background: var(--volt); color: var(--on-volt); border-color: var(--volt); }
+@media (prefers-color-scheme: light) { .btn.ghost:hover { border-color: var(--on-volt); } }
+@media (max-width: 420px) { .btn { padding: 0 12px; font-size: 13px; letter-spacing: 0; } }
+
+/* Header */
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--pad); }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 900 15px/1 var(--display); font-stretch: 125%; }
+/* The app icon itself: chartreuse G on a black tile, in both themes. */
+.brand svg { width: 28px; height: 28px; border-radius: 22%; background: #0A0A0A; padding: 4px; }
+.brand path { fill: #D4FF3A; }
+header nav ul { display: flex; gap: 6px 22px; margin: 0; padding: 0; list-style: none; }
+header nav a { text-decoration: none; color: var(--text2); padding: 8px 0; display: inline-block; }
+header nav a:hover, header nav a[aria-current="page"] { color: var(--mark); }
+header nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+header nav .cta-link { color: var(--mark); }
+
+/* Footer */
+footer.site { padding: 40px 0; border-top: 1px solid var(--surface2); }
+footer.site .seg { max-width: 360px; }
+footer.site .tagline { margin: 16px 0 28px; color: var(--text2); }
+footer.site .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--text2); }
+footer.site ul { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
+footer.site a { color: var(--text); text-underline-offset: 4px; display: inline-block; padding: 6px 0; }
+footer.site a:hover { color: var(--mark); text-decoration-thickness: 2px; }
+footer.site a[aria-current="page"] { color: var(--mark); text-decoration-thickness: 2px; }
+footer.site p { margin: 6px 0 0; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
