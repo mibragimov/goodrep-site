@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Seven-segment displays for prototype C, drawn like the app icon (direction H, Clock): slanted cells whose G
-lights a, f, e, d, c and a half crossbar. Writes inline SVG between <!--seg:NAME--> and <!--/seg--> markers in
-prototypes/C/index.html, so the page needs no script to show them. Re-run after changing a display:
+"""Seven-segment displays for the site, drawn like the app icon (direction H, Clock): slanted cells whose G
+lights a, f, e, d, c and a half crossbar. Writes inline SVG between <!--seg:NAME--> and <!--/seg--> markers in the live
+pages (index.html, privacy/, support/), so they need no script to show them. Re-run after changing a display:
 
     python3 tools/segments.py
+
+prototypes/C/index.html is history and is no longer rewritten.
 """
 import math
 import pathlib
@@ -76,18 +78,21 @@ def display(text, label, live=False, colon_after=None, dots_cell=None):
     return f'<svg class="seg" viewBox="-6 -6 {width + 12:.0f} {H + 12}" {role}>' + "".join(parts) + "</svg>"
 
 DISPLAYS = {
-    "kg": display("80", ""), "reps": display("8", ""),
-    "clock": display(" 01 30 ", "Break timer 01:30", live=True, dots_cell=3),
+    "kg": display("80", ""), "reps": display("8", ""),  # the hero board: last time, 80 kg × 8
     "n1": display("01", ""), "n2": display("02", ""), "n3": display("03", ""), "n4": display("04", ""),
-    "zero1": display("0", ""), "zero2": display("0", ""), "zero3": display("0", ""), "zero4": display("0", ""), "zero5": display("0", ""),
+    "clock": display(" 01 30 ", "Break timer 01:30", live=True, dots_cell=3),  # the script lights any time
+    "zero1": display("0", ""), "zero2": display("0", ""), "zero3": display("0", ""), "zero4": display("0", ""),
+    "zero5": display("0", ""),
     "foot": display("GOOdrEP", "GOODREP"),
 }
 
-page = pathlib.Path(__file__).resolve().parent.parent / "prototypes" / "C" / "index.html"
-html = page.read_text()
-for name, svg in DISPLAYS.items():
-    html, n = re.subn(rf"<!--seg:{name}-->.*?<!--/seg-->", f"<!--seg:{name}-->{svg}<!--/seg-->", html, flags=re.S)
-    if n == 0:
-        print(f"marker seg:{name} not found")
-page.write_text(html)
-print("wrote", page)
+root = pathlib.Path(__file__).resolve().parent.parent
+for rel in ("index.html", "privacy/index.html", "support/index.html"):
+    page = root / rel
+    html = page.read_text()
+    for name, svg in DISPLAYS.items():
+        html, n = re.subn(rf"<!--seg:{name}-->.*?<!--/seg-->", lambda m: f"<!--seg:{name}-->{svg}<!--/seg-->", html, flags=re.S)
+        if n == 0 and rel == "index.html":
+            print(f"marker seg:{name} not found in {rel}")
+    page.write_text(html)
+    print("wrote", page)
