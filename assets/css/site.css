@@ -77,6 +77,11 @@ img { display: block; max-width: 100%; }
 @media (prefers-color-scheme: light) { .btn.ghost:hover { border-color: var(--on-volt); } }
 @media (max-width: 420px) { .btn { padding: 0 12px; font-size: 13px; letter-spacing: 0; } }
 
+/* Apple's official "Download on the App Store" badge, unaltered: black in light, white in dark, at least 40 px
+   tall on screen, with clear space of a quarter of its height around it. */
+.store-badge { display: inline-block; margin: 14px 0; line-height: 0; }
+.store-badge img { width: auto; height: 56px; }
+
 /* Header */
 header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--pad); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 900 15px/1 var(--display); font-stretch: 125%; }
